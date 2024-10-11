@@ -1,0 +1,168 @@
+.quiz-container {
+    max-width: 800px;
+    margin: 40px auto;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border: 1px solid #0073e6;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .question {
+    margin-bottom: 20px;
+  }
+  
+  .options {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  
+  .option {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    padding: 10px;
+    margin: 10px;
+    cursor: move;
+  }
+  
+  .categories {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+  }
+  
+  .category {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    padding: 10px;
+    margin: 10px;
+  }
+  
+  .draggable {
+    opacity: 0.5;
+  }
+
+  /* Container Styling */
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between; /* Spreads the content: logo on left, buttons on right */
+}
+
+/* Header Styling */
+.site-header {
+  background-color: #1a1a1a; /* Dark color similar to Guhuza's navigation bar */
+  padding: 15px 0;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.site-header .logo img {
+  height: 50px;
+}
+
+.main-nav {
+  display: inline-block;
+  margin-left: 50px; /* Optional: Create spacing between logo and navigation links */
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 20px;
+}
+
+.nav-links li a {
+  color: #ffffff; /* White text */
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 16px;
+}
+
+.nav-links li a:hover {
+  color: #0073e6; /* Light blue hover effect */
+}
+
+
+/* Positioning Sign In and Sign Up Buttons in Top Right Corner */
+.auth-buttons {
+  margin-left: auto;
+  display: flex;
+  gap: 10px;
+}
+
+.auth-buttons .btn {
+  text-decoration: none;
+  padding: 8px 15px;
+  border-radius: 5px;
+  font-weight: bold;
+}
+
+.auth-buttons .btn-signin {
+  background-color: transparent;
+  border: 2px solid #ffffff; /* White border for 'Sign In' button */
+  color: #ffffff;
+}
+
+.auth-buttons .btn-signin:hover {
+  background-color: #0073e6;
+  color: #ffffff;
+}
+
+.auth-buttons .btn-signup {
+  background-color: #0073e6; /* Blue background for 'Sign Up' */
+  color: #ffffff;
+  border: none;
+}
+
+.auth-buttons .btn-signup:hover {
+  background-color: #005bb5; /* Darker blue on hover */
+}
+
+
+  /* Footer Styling */
+.site-footer {
+  background-color: #1a1a1a; /* Dark grey footer similar to navigation */
+  color: #ffffff;
+  padding: 20px 0;
+}
+
+.footer-top {
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+.footer-nav a {
+  color: #ffffff;
+  margin: 0 10px;
+  text-decoration: none;
+}
+
+.footer-nav a:hover {
+  text-decoration: underline;
+}
+
+.footer-bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.footer-bottom p {
+  margin: 0;
+}
+
+.social-links a {
+  margin-left: 10px;
+}
+
+.social-links img {
+  width: 24px;
+  height: 24px;
+}

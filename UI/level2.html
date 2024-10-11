@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guhuza Quiz Page</title>
+    <link rel="stylesheet" href="style/question.css"> <!-- Link to your CSS file -->
+</head>
+<body>
+    <!-- Header / Navigation Bar -->
+    <header class="site-header">
+        <div class="container">
+            <a href="https://guhuza.com" class="logo">
+                <img src="https://guhuza.com/logo/logo_white_large.png" alt="Guhuza Logo">
+            </a>
+            <nav class="main-nav">
+                <ul class="nav-links">
+                    <li><a href="https://guhuza.com/jobs">Find Jobs</a></li>
+                    <li><a href="https://guhuza.com/employers">Employers</a></li>
+                    <li><a href="https://guhuza.com/candidates">Candidates</a></li>
+                    <li><a href="https://guhuza.com/about-us">About Us</a></li>
+                </ul>
+            </nav>
+            <div class="auth-buttons">
+                <a href="https://guhuza.com/signin" class="btn btn-signin">Sign In</a>
+                <a href="https://guhuza.com/signup" class="btn btn-signup">Sign Up</a>
+            </div>
+        </div>
+    </header>
+
+     
+    <!-- Your Quiz or Game Content Goes Here -->
+    <div class="quiz-container">
+        <!-- Quiz content goes here -->
+        <h1>Career Quiz</h1>
+
+        <!-- Question Area -->
+        <div class="question" id="question"></div>
+
+        <!-- Answer Buttons -->
+        <div class="answers" id="answers">
+            <button onclick="checkAnswer(0)">Option 1</button>
+            <button onclick="checkAnswer(1)">Option 2</button>
+            <button onclick="checkAnswer(2)">Option 3</button>
+            <button onclick="checkAnswer(3)">Option 4</button>
+        </div>
+
+        <!-- Feedback Message -->
+        <div class="feedback" id="feedback"></div>
+
+        <!-- Level Completion Message -->
+        <div class="level-status" id="level-status"></div>
+
+        <!-- Next Question Button -->
+        <button class="next-question" id="next-question" onclick="loadNextQuestion()">Next Question</button>
+
+        <div id="stars" class="stars-container"></div>
+        <div id="level-info"></div>
+
+        <!-- Level 3 button (initially hidden) -->
+        <a href="level3.html" target="_blank">
+        <button id="level3-button" style="display:none;" onclick="openLevel3()">Start Level 3</button>
+        </a>
+    </div>
+
+    </div>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-top">
+                <div class="footer-nav">
+                    <a href="https://guhuza.com/terms">Terms of Service</a> |
+                    <a href="https://guhuza.com/privacy">Privacy Policy</a> |
+                    <a href="https://guhuza.com/contact">Contact Us</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© 2024 Guhuza. All Rights Reserved.</p>
+                <div class="social-links">
+                    <a href="https://www.facebook.com/Guhuza/"><img src="https://www.freeiconspng.com/uploads/facebook-logo-facebook-logo-9.png" alt="Facebook"></a>
+                    <a href="https://x.com/torecruiters/status/1485730169029468163"><img src="https://static.vecteezy.com/system/resources/previews/027/395/710/non_2x/twitter-brand-new-logo-3-d-with-new-x-shaped-graphic-of-the-world-s-most-popular-social-media-free-png.png" alt="Twitter"></a>
+                    <a href="https://ca.linkedin.com/company/guhuza"><img src="https://itcnet.gr/wp-content/uploads/2020/09/Linkedin-logo-on-transparent-Background-PNG-.png" alt="LinkedIn"></a>
+                    <a href="https://www.instagram.com/guhuza_/"><img src="https://static.vecteezy.com/system/resources/previews/018/930/413/non_2x/instagram-logo-instagram-icon-transparent-free-png.png" alt="Instagram"></a>
+                    <a href="https://www.youtube.com/@Guhuza"><img src="https://www.freeiconspng.com/uploads/hd-youtube-logo-png-transparent-background-20.png" alt="YouTube"></a>
+                    <a href="https://www.tiktok.com/@guhuza"><img src="https://pngimg.com/uploads/tiktok/tiktok_PNG12.png" alt="TikTok" ></a>
+                    <a href="https://open.spotify.com/show/4jQy8DF6ut5lHxpYMjKxA2"><img src="https://images.vexels.com/media/users/3/137413/isolated/preview/4acb8e52632aa9b7c874b878eaf02bc4-spotify-icon-logo-by-vexels.png" alt="Spotify"></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/level2.js"></script>
+
+</body>
+</html>
