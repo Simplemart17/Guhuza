@@ -6,18 +6,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Profile - Guhuza</title>
     <link rel="stylesheet" href="style/profile.css"> <!-- Link to the CSS file -->
+    <link rel="stylesheet" href="style/style.css">
+    <link rel="stylesheet" href="style/footer.css">
+    <link rel="stylesheet" href="style/header.css">
 </head>
 
 <body>
     <!-- Header / Navigation Bar -->
     <header class="site-header">
         <div class="container">
-            <a href="dashboard.html" class="logo">
+            <a href="index.html" class="logo">
                 <img src="https://guhuza.com/logo/logo_white_large.png" alt="Guhuza Logo">
             </a>
+            <div class="menu-toggle">☰</div>
             <nav class="main-nav">
                 <ul class="nav-links">
-                    <li><a href="dashboard.html">Home</a></li>
+                    <li><a href="index.html">Home</a></li>
                     <li><a href="play.html">Play</a></li>
                     <li><a href="leaderboard.html">Leaderboard</a></li>
                     <li><a href="profile.html">Profile</a></li>
@@ -90,7 +94,7 @@
 
     <!-- Footer -->
     <footer class="site-footer">
-        <div class="container">
+        <div class="footer-container">
             <div class="footer-top">
                 <div class="footer-nav">
                     <a href="https://guhuza.com/terms">Terms of Service</a> |
@@ -98,64 +102,33 @@
                     <a href="https://guhuza.com/contact">Contact Us</a>
                 </div>
             </div>
-            <div class="footer-bottom">
+            <div class="copyright">
                 <p>© 2024 Guhuza. All Rights Reserved.</p>
-                <div class="social-links">
-                    <a href="https://www.facebook.com/Guhuza/"><img
-                            src="https://www.freeiconspng.com/uploads/facebook-logo-facebook-logo-9.png"
-                            alt="Facebook"></a>
-                    <a href="https://x.com/torecruiters/status/1485730169029468163"><img
-                            src="https://static.vecteezy.com/system/resources/previews/027/395/710/non_2x/twitter-brand-new-logo-3-d-with-new-x-shaped-graphic-of-the-world-s-most-popular-social-media-free-png.png"
-                            alt="Twitter"></a>
-                    <a href="https://ca.linkedin.com/company/guhuza"><img
-                            src="https://itcnet.gr/wp-content/uploads/2020/09/Linkedin-logo-on-transparent-Background-PNG-.png"
-                            alt="LinkedIn"></a>
-                    <a href="https://www.instagram.com/guhuza_/"><img
-                            src="https://static.vecteezy.com/system/resources/previews/018/930/413/non_2x/instagram-logo-instagram-icon-transparent-free-png.png"
-                            alt="Instagram"></a>
-                    <a href="https://www.youtube.com/@Guhuza"><img
-                            src="https://www.freeiconspng.com/uploads/hd-youtube-logo-png-transparent-background-20.png"
-                            alt="YouTube"></a>
-                    <a href="https://www.tiktok.com/@guhuza"><img
-                            src="https://pngimg.com/uploads/tiktok/tiktok_PNG12.png" alt="TikTok"></a>
-                    <a href="https://open.spotify.com/show/4jQy8DF6ut5lHxpYMjKxA2"><img
-                            src="https://images.vexels.com/media/users/3/137413/isolated/preview/4acb8e52632aa9b7c874b878eaf02bc4-spotify-icon-logo-by-vexels.png"
-                            alt="Spotify"></a>
-                </div>
+            </div>
+            <div class="social-links">
+                <a href="https://www.facebook.com/Guhuza/"><img
+                        src="https://www.freeiconspng.com/uploads/facebook-logo-facebook-logo-9.png" alt="Facebook"></a>
+                <a href="https://x.com/torecruiters/status/1485730169029468163"><img
+                        src="https://static.vecteezy.com/system/resources/previews/027/395/710/non_2x/twitter-brand-new-logo-3-d-with-new-x-shaped-graphic-of-the-world-s-most-popular-social-media-free-png.png"
+                        alt="Twitter"></a>
+                <a href="https://ca.linkedin.com/company/guhuza"><img
+                        src="https://itcnet.gr/wp-content/uploads/2020/09/Linkedin-logo-on-transparent-Background-PNG-.png"
+                        alt="LinkedIn"></a>
+                <a href="https://www.instagram.com/guhuza_/"><img
+                        src="https://static.vecteezy.com/system/resources/previews/018/930/413/non_2x/instagram-logo-instagram-icon-transparent-free-png.png"
+                        alt="Instagram"></a>
+                <a href="https://www.tiktok.com/@guhuza"><img src="https://pngimg.com/uploads/tiktok/tiktok_PNG12.png"
+                        alt="TikTok"></a>
+                <a href="https://www.youtube.com/@Guhuza"><img
+                        src="https://www.freeiconspng.com/uploads/hd-youtube-logo-png-transparent-background-20.png"
+                        alt="YouTube"></a>
             </div>
         </div>
     </footer>
 
 
-    <script>
-        // Preview uploaded profile image
-        function previewImage(event) {
-            const reader = new FileReader();
-            reader.onload = function () {
-                const output = document.getElementById('profile-pic');
-                output.src = reader.result;
-            }
-            reader.readAsDataURL(event.target.files[0]);
-        }
-
-        // Edit profile function (shows editable fields)
-        function editProfile() {
-            const form = document.querySelector('.profile-edit-section');
-            form.style.display = form.style.display === 'block' ? 'none' : 'block';
-        }
-
-        // Save profile changes (basic functionality)
-        document.getElementById('profile-form').addEventListener('submit', function (e) {
-            e.preventDefault();  // Prevent default form submission
-
-            document.getElementById('name').textContent = document.getElementById('name-input').value;
-            document.getElementById('email').textContent = document.getElementById('email-input').value;
-            document.getElementById('phone').textContent = document.getElementById('phone-input').value;
-            document.getElementById('employment-status').textContent = document.getElementById('employment-status-input').value;
-
-            alert('Profile updated successfully!');
-        });
-    </script>
+    <script src="js/header.js"></script>
+    <script src="js/profile.js"></script>
 </body>
 
 </html>

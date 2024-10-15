@@ -1,0 +1,171 @@
+.container {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  padding: 15px 20px;
+}
+
+.logo img {
+  height: 30px;
+  margin-top: 7px;
+}
+
+/* Header Styling */
+.site-header {
+  background-color: #1a1a1a;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+}
+
+/* Hamburger menu for mobile */
+.menu-toggle {
+  display: block;
+  color: #ffffff;
+  font-size: 34px;
+  cursor: pointer;
+}
+
+.main-nav {
+  display: none;
+  width: 100%;
+  position: fixed;
+  top: 70px; /* Adjust based on your header height */
+  left: 0;
+  right: 0;
+  background-color: #1a1a1a;
+  height: calc(100vh - 70px); /* Adjust based on your header height */
+  overflow-y: auto;
+}
+
+.nav-links {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.nav-links li {
+  padding: 15px 20px;
+  border-bottom: 1px solid #333;
+}
+
+.nav-links li a {
+  color: #ffffff;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 16px;
+}
+
+.nav-links li a:hover {
+  color: #0073e6;
+}
+
+/* Positioning Sign In and Sign Up Buttons */
+.auth-buttons {
+  display: none;
+  width: 100%;
+  padding: 15px 20px;
+  background-color: #1a1a1a;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
+.auth-buttons .btn {
+  display: block;
+  width: 100%;
+  text-align: center;
+  text-decoration: none;
+  padding: 10px 15px;
+  border-radius: 5px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.auth-buttons .btn-signin {
+  background-color: transparent;
+  border: 2px solid #ffffff; /* White border for 'Sign In' button */
+  color: #ffffff;
+}
+
+.auth-buttons .btn-signin:hover {
+  background-color: #0073e6;
+  color: #ffffff;
+}
+
+.auth-buttons .btn-signup {
+  background-color: #0073e6; /* Blue background for 'Sign Up' */
+  color: #ffffff;
+  border: none;
+}
+
+.auth-buttons .btn-signup:hover {
+  background-color: #005bb5; /* Darker blue on hover */
+}
+
+/* Responsive styles */
+@media screen and (min-width: 768px) {
+  .container {
+    flex-wrap: nowrap;
+    padding: 15px 40px;
+    margin: 0 auto;
+  }
+
+  .menu-toggle {
+    display: none;
+  }
+
+  .main-nav {
+    display: block;
+    position: static;
+    width: auto;
+    height: 0px;
+    overflow-y: visible;
+    background-color: transparent;
+  }
+
+  .nav-links {
+    display: flex;
+  }
+
+  .nav-links li {
+    padding: 0;
+    border-bottom: none;
+    margin-left: 20px;
+  }
+
+  .auth-buttons {
+    display: flex;
+    position: static;
+    width: auto;
+    padding: 0;
+    background-color: transparent;
+  }
+
+  .auth-buttons .btn {
+    display: inline-block;
+    width: auto;
+    margin-left: 10px;
+    margin-bottom: 0;
+  }
+
+  .logo img {
+    height: 40px;
+    max-width: 100%;
+  }
+}
+
+/* Animation for dropdown */
+@keyframes slideDown {
+  from { opacity: 0; transform: translateY(-10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.main-nav.active, .auth-buttons.active {
+  display: block;
+  animation: slideDown 0.3s ease-out;
+}
