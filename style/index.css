@@ -1,0 +1,107 @@
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    color: #333;
+    position: relative;
+}
+
+.background-image {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('../images/recruitment.jpg'); /* Replace with your image URL */
+    background-size: cover;
+    background-position: center;
+    opacity: 0.2;
+    z-index: -1;
+}
+
+.skills-development {
+    background-color: #ffecd2;
+    background-image: linear-gradient(to right, #ffecd2 0%, #fcb69f 100%);
+}
+
+.networking {
+    background-color: #84fab0;
+    background-image: linear-gradient(to right, #84fab0 0%, #8fd3f4 100%);
+}
+
+.interview-practice {
+    background-color: #a6c0fe;
+    background-image: linear-gradient(to right, #a6c0fe 0%, #f68084 100%);
+}
+
+.dashboard-container {
+    max-width: 1200px;
+    margin: 2rem auto;
+    padding: 0 1rem;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+}
+
+.colorful-section {
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.colorful-section:hover {
+    transform: translateY(-5px);
+}
+
+.welcome-section {
+    background-color: #ff9a9e;
+    background-image: linear-gradient(to right, #ff9a9e 0%, #fad0c4 100%);
+}
+
+.how-to-play {
+    background-color: #a1c4fd;
+    background-image: linear-gradient(to right, #a1c4fd 0%, #c2e9fb 100%);
+}
+
+.benefits-of-playing {
+    background-color: #d4fc79;
+    background-image: linear-gradient(to right, #d4fc79 0%, #96e6a1 100%);
+}
+
+h1, h2 {
+    color: #2c3e50;
+    margin-bottom: 1rem;
+}
+
+p, ul {
+    line-height: 1.6;
+}
+
+button {
+    background-color: #3498db;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    align-self: center;
+    margin-top: 1rem;
+}
+
+button:hover {
+    background-color: #2980b9;
+}
+
+
+
+/* Responsive design */
+@media (max-width: 768px) {
+    .dashboard-container {
+        grid-template-columns: 1fr;
+    }
+}
