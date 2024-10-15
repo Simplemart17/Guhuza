@@ -37,7 +37,7 @@
   left: 0;
   right: 0;
   background-color: #1a1a1a;
-  max-height: calc(100vh - 70px); /* Adjust based on your header height */
+  height: calc(100vh - 70px); /* Adjust based on your header height */
   overflow-y: auto;
 }
 
@@ -123,7 +123,7 @@
     display: block;
     position: static;
     width: auto;
-    max-height: none;
+    height: 0px;
     overflow-y: visible;
     background-color: transparent;
   }
