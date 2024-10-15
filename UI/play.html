@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Play - Guhuza</title>
+    <link rel="stylesheet" href="style/play.css"> <!-- Link to CSS file -->
+    <link rel="stylesheet" href="style/style.css">
+    <link rel="stylesheet" href="style/footer.css">
+    <link rel="stylesheet" href="style/header.css">
+</head>
+
+<body>
+    <!-- Header / Navigation Bar -->
+    <header class="site-header">
+        <div class="container">
+            <a href="index.html" class="logo">
+                <img src="https://guhuza.com/logo/logo_white_large.png" alt="Guhuza Logo">
+            </a>
+            <nav class="main-nav">
+                <ul class="nav-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="play.html">Play</a></li>
+                    <li><a href="leaderboard.html">Leaderboard</a></li>
+                    <li><a href="profile.html">Profile</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <div class="play-container">
+        <!-- Sidebar Column for Levels -->
+        <aside class="level-sidebar">
+            <h2>Game Levels Overview</h2>
+            <ul>
+                <li><strong>Beginner</strong>
+                    <ul style="background-color: #6fe600 ;">
+                        <li>Level 1</li>
+                        <li>Level 2</li>
+                    </ul>
+                </li>
+                <li><strong>Intermediate</strong>
+                    <ul style="background-color: yellow;">
+                        <li>Level 3</li>
+                        <li>Level 4</li>
+                        <li>Level 5</li>
+                        <li>Level 6</li>
+                    </ul>
+                </li>
+                <li><strong>Advanced</strong>
+                    <ul style="background-color: red;">
+                        <li>Level 7</li>
+                        <li>Level 8</li>
+                        <li>Level 9</li>
+                        <li>Level 10</li>
+                    </ul>
+                </li>
+            </ul>
+        </aside>
+
+        <!-- Main Content for Game Levels and Details -->
+        <div class="play-main">
+            <section class="game-intro">
+                <h1>Welcome to Guhuza Game</h1>
+                <p>Get ready to experience the world of job hunting in a fun and competitive way! Navigate through
+                    various levels, test your job-seeking skills, and stand out to recruiters.</p>
+            </section>
+
+            <!-- Game Levels -->
+            <section class="game-levels">
+                <h2>Game Levels</h2>
+                <div class="levels">
+
+                    <!-- Beginner Level -->
+                    <div class="level-card">
+                        <h3>Beginner</h3>
+                        <p>Minimum 5 Questions</p>
+                        <p>Score Required: 3</p>
+                        <p>Pass this level to unlock messaging with recruiters!</p>
+                        <a href="question.html">
+                            <button>Start Beginner</button>
+                        </a>
+
+                    </div>
+
+                    <!-- Intermediate Level -->
+                    <div class="level-card">
+                        <h3>Intermediate</h3>
+                        <p>Minimum 5 Questions</p>
+                        <p>Score Required: 3</p>
+                        <p>Pass the beginner level to access this challenge.</p>
+                        <a href="level3.html">
+                            <button>Start Intermediate</button>
+                        </a>
+                    </div>
+
+                    <!-- Advanced Level -->
+                    <div class="level-card">
+                        <h3>Advanced</h3>
+                        <p>Minimum 5 Questions</p>
+                        <p>Score Required: 3</p>
+                        <p>Master your job-seeking skills to become a pro!</p>
+                        <a href="#">
+                            <button>Start Advanced</button>
+                        </a>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Referral and Share Options -->
+            <section class="referral-share">
+                <h2>Refer a Friend</h2>
+                <p>Earn bonus points by referring Guhuza to a friend. Share your unique referral link and invite them to
+                    play.</p>
+                <input type="text" id="referral-link" value="https://guhuza.com/referral?user=YOUR_USERNAME" readonly>
+                <button onclick="copyReferral()">Copy Referral Link</button>
+
+                <h3>Share with Friends:</h3>
+                <div class="share-options">
+                    <button onclick="shareOnSocial('facebook')">Share on Facebook</button>
+                    <button onclick="shareOnSocial('twitter')">Share on Twitter</button>
+                    <button onclick="shareOnSocial('linkedin')">Share on LinkedIn</button>
+                </div>
+            </section>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-top">
+                <div class="footer-nav">
+                    <a href="https://guhuza.com/terms">Terms of Service</a> |
+                    <a href="https://guhuza.com/privacy">Privacy Policy</a> |
+                    <a href="https://guhuza.com/contact">Contact Us</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© 2024 Guhuza. All Rights Reserved.</p>
+                <div class="social-links">
+                    <a href="https://www.facebook.com/Guhuza/"><img
+                            src="https://www.freeiconspng.com/uploads/facebook-logo-facebook-logo-9.png"
+                            alt="Facebook"></a>
+                    <a href="https://x.com/torecruiters/status/1485730169029468163"><img
+                            src="https://static.vecteezy.com/system/resources/previews/027/395/710/non_2x/twitter-brand-new-logo-3-d-with-new-x-shaped-graphic-of-the-world-s-most-popular-social-media-free-png.png"
+                            alt="Twitter"></a>
+                    <a href="https://ca.linkedin.com/company/guhuza"><img
+                            src="https://itcnet.gr/wp-content/uploads/2020/09/Linkedin-logo-on-transparent-Background-PNG-.png"
+                            alt="LinkedIn"></a>
+                    <a href="https://www.instagram.com/guhuza_/"><img
+                            src="https://static.vecteezy.com/system/resources/previews/018/930/413/non_2x/instagram-logo-instagram-icon-transparent-free-png.png"
+                            alt="Instagram"></a>
+                    <a href="https://www.youtube.com/@Guhuza"><img
+                            src="https://www.freeiconspng.com/uploads/hd-youtube-logo-png-transparent-background-20.png"
+                            alt="YouTube"></a>
+                    <a href="https://www.tiktok.com/@guhuza"><img
+                            src="https://pngimg.com/uploads/tiktok/tiktok_PNG12.png" alt="TikTok"></a>
+                    <a href="https://open.spotify.com/show/4jQy8DF6ut5lHxpYMjKxA2"><img
+                            src="https://images.vexels.com/media/users/3/137413/isolated/preview/4acb8e52632aa9b7c874b878eaf02bc4-spotify-icon-logo-by-vexels.png"
+                            alt="Spotify"></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+
+    <script>
+
+        // Check the user's progress from local storage
+        window.onload = function () {
+            const beginnerCompleted = localStorage.getItem('beginnerCompleted');
+            const intermediateCompleted = localStorage.getItem('intermediateCompleted');
+
+            // If Beginner is completed, enable the Intermediate button
+            if (beginnerCompleted) {
+                document.getElementById('startIntermediate').disabled = false;
+            }
+
+            // If Intermediate is completed, enable the Advanced button
+            if (intermediateCompleted) {
+                document.getElementById('startAdvanced').disabled = false;
+            }
+        };
+
+        // Function to mark Beginner as completed
+        function completeBeginner() {
+            localStorage.setItem('beginnerCompleted', true);
+            alert('Beginner level completed! Intermediate unlocked.');
+            window.location.href = 'UI/level3.html'; // Redirect to the next level
+        }
+
+        // Function to mark Intermediate as completed
+        function completeIntermediate() {
+            localStorage.setItem('intermediateCompleted', true);
+            alert('Intermediate level completed! Advanced unlocked.');
+            window.location.href = 'level7.html'; // Redirect to the next level
+        }
+
+        // Copy the referral link to clipboard
+        function copyReferral() {
+            const referralLink = document.getElementById('referral-link');
+            referralLink.select();
+            document.execCommand('copy');
+            alert("Referral link copied!");
+        }
+
+        // Share the web link on social media
+        function shareOnSocial(platform) {
+            let url = '';
+            if (platform === 'facebook') {
+                url = 'https://www.facebook.com/sharer/sharer.php?u=' + document.location.href;
+            } else if (platform === 'twitter') {
+                url = 'https://twitter.com/intent/tweet?url=' + document.location.href;
+            } else if (platform === 'linkedin') {
+                url = 'https://www.linkedin.com/shareArticle?mini=true&url=' + document.location.href;
+            }
+            window.open(url, '_blank');
+        }
+    </script>
+</body>
+
+</html>
