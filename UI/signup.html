@@ -3,14 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Forgot Password - Guhuza</title>
-    <link rel="stylesheet" href="sign.css">
+    <title>Sign Up - Guhuza</title>
+    <link rel="stylesheet" href="style/sign.css">
     <script defer src="sign.js"></script> <!-- JavaScript for validation -->
 </head>
 <body>
     <!-- Header / Navigation Bar -->
     <header class="site-header">
-        
         <div class="container">
             <a href="https://guhuza.com" class="logo">
                 <img src="https://guhuza.com/logo/logo_white_large.png" alt="Guhuza Logo">
@@ -23,21 +22,26 @@
                     <li><a href="https://guhuza.com/about-us">About Us</a></li>
                 </ul>
             </nav>
-        
+            
         </div>
     </header>
-
-    <!-- Forget Password Form-->
+    <!--Sign Up form-->
     <div class="auth-container">
         <div class="auth-box">
-            <h2>Forgot Password</h2>
-            <form id="forgot-password-form" onsubmit="return validateEmail()" action="password-reset-confirmation.html">
-                <label for="email">Enter your email address:</label>
-                <input type="email" id="email" name="email" required placeholder="Enter your email">
+            <h2>Sign Up</h2>
+            <form id="sign-up-form" onsubmit="return validateSignUp()" action="welcome.html">
+                <label for="username">Username:</label>
+                <input type="text" id="username" name="username" required placeholder="Choose a username" minlength="3">
                 
-                <button type="submit">Send Reset Link</button>
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password" required placeholder="Create a password" minlength="8" maxlength="10">
+                
+                <label for="confirm-password">Confirm Password:</label>
+                <input type="password" id="confirm-password" name="confirm-password" required placeholder="Confirm your password">
+                
+                <button type="submit" onclick="location.href='dashboard.html'">Sign Up</button>
             </form>
-            <p><a href="sign.html">Back to Sign In</a></p>
+            <p>Already have an account? <a href="signin.html">Sign In</a></p>
         </div>
     </div>
 

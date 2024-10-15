@@ -3,46 +3,60 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sign Up - Guhuza</title>
-    <link rel="stylesheet" href="sign.css">
-    <script defer src="sign.js"></script> <!-- JavaScript for validation -->
+    <title>Dashboard - Guhuza</title>
+    <link rel="stylesheet" href="style/dashboard.css"> <!-- Link to your CSS file -->
 </head>
 <body>
+    
     <!-- Header / Navigation Bar -->
-    <header class="site-header">
-        <div class="container">
-            <a href="https://guhuza.com" class="logo">
-                <img src="https://guhuza.com/logo/logo_white_large.png" alt="Guhuza Logo">
-            </a>
-            <nav class="main-nav">
-                <ul class="nav-links">
-                    <li><a href="https://guhuza.com/jobs">Find Jobs</a></li>
-                    <li><a href="https://guhuza.com/employers">Employers</a></li>
-                    <li><a href="https://guhuza.com/candidates">Candidates</a></li>
-                    <li><a href="https://guhuza.com/about-us">About Us</a></li>
-                </ul>
-            </nav>
-            
+  <header class="site-header">
+    <div class="container">
+        <a href="https://guhuza.com" class="logo">
+            <img src="https://guhuza.com/logo/logo_white_large.png" alt="Guhuza Logo">
+        </a>
+        <nav class="main-nav">
+            <ul class="nav-links">
+                <li><a href="dashboard.html">Home</a></li>
+                    <li><a href="play.html">Play</a></li>
+                    <li><a href="leaderboard.html">Leaderboard</a></li>
+                    <li><a href="profile.html">Profile</a></li>
+            </ul>
+        </nav>
+        <div class="auth-buttons">
+            <a href="sign.html" class="btn btn-signin">Sign In</a>
+            <a href="signup.html" class="btn btn-signup">Sign Up</a>
         </div>
-    </header>
-    <!--Sign Up form-->
-    <div class="auth-container">
-        <div class="auth-box">
-            <h2>Sign Up</h2>
-            <form id="sign-up-form" onsubmit="return validateSignUp()" action="welcome.html">
-                <label for="username">Username:</label>
-                <input type="text" id="username" name="username" required placeholder="Choose a username" minlength="3">
-                
-                <label for="password">Password:</label>
-                <input type="password" id="password" name="password" required placeholder="Create a password" minlength="8" maxlength="10">
-                
-                <label for="confirm-password">Confirm Password:</label>
-                <input type="password" id="confirm-password" name="confirm-password" required placeholder="Confirm your password">
-                
-                <button type="submit" onclick="location.href='dashboard.html'">Sign Up</button>
-            </form>
-            <p>Already have an account? <a href="sign.html">Sign In</a></p>
-        </div>
+    </div>
+</header>
+
+    <!-- Main Content -->
+    <div class="dashboard-container">
+        <section class="welcome-section">
+            <h1>Welcome to Guhuza</h1>
+            <p>
+                Guhuza is a web-based game that engages users through the job-seeking and hiring process. 
+                Compete with other players, improve your skills, and experience the excitement of landing your dream job in a fun and interactive way!
+            </p>
+        </section>
+
+        <section class="how-to-play">
+            <h2>How to Play</h2>
+            <p>
+                To start playing, click on the 'Play' button in the navigation bar. You'll be guided through various job-seeking scenarios and challenges. 
+                The goal is to apply, interview, and secure a job while competing with other players for the top score!
+            </p>
+            <button onclick="location.href='play.html'">Play Now</button>
+        </section>
+
+        <section class="benefits-of-playing">
+            <h2>Benefits of Playing</h2>
+            <ul>
+                <li>Improve your job-seeking skills</li>
+                <li>Network with other players</li>
+                <li>Win exciting prizes and rewards</li>
+            </ul>
+            <button onclick="location.href='register.html'">Register Now</button>
+        </section>
     </div>
 
     <!-- Footer -->
@@ -69,5 +83,6 @@
             </div>
         </div>
     </footer>
+
 </body>
 </html>
