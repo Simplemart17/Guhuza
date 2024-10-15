@@ -2,12 +2,18 @@
   .site-footer {
     background-color: #1a1a1a; /* Dark grey footer similar to navigation */
     color: #ffffff;
-    padding: 20px 0;
+    padding: 20px 40px;
+  }
+
+  .footer-container {
+    display: block;
+    align-items: center;
+    justify-content: space-between;
   }
   
   .footer-top {
     text-align: center;
-    margin-bottom: 10px;
+    /* margin-bottom: 10px; */
   }
   
   .footer-nav a {
@@ -19,23 +25,29 @@
   .footer-nav a:hover {
     text-decoration: underline;
   }
-  
-  .footer-bottom {
+
+  .social-links {
     display: flex;
-    justify-content: space-between;
     align-items: center;
+    justify-content: center;
+    gap: 10px;
   }
-  
-  .footer-bottom p {
-    margin: 0;
-  }
-  
-  .social-links a {
-    margin-left: 10px;
+
+  .copyright {
+    text-align: center;
+    margin: 10px 0px;
   }
   
   .social-links img {
     width: 24px;
     height: 24px;
+  }
+
+  @media screen and (min-width: 768px) {
+    .footer-container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
   }
   
