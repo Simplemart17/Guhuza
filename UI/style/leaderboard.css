@@ -5,7 +5,7 @@
 }
 
 .leaderboard h1 {
-    font-size: 28px;
+    font-size: 24px;
     text-align: center;
     margin-bottom: 20px;
 }
@@ -13,23 +13,43 @@
 .leaderboard-table {
     width: 100%;
     border-collapse: collapse;
-    text-align: left;
     margin-bottom: 40px;
 }
 
-.leaderboard-table th, .leaderboard-table td {
-    padding: 10px;
-    border: 1px solid #ddd;
-    font-size: 14px;
+/* Mobile styles */
+.leaderboard-table thead {
+    display: none;
 }
 
-.leaderboard-table th {
-    background-color: #0073e6;
-    color: white;
+.leaderboard-table, .leaderboard-table tbody, .leaderboard-table tr, .leaderboard-table td {
+    display: block;
 }
 
-.leaderboard-table tbody tr:nth-child(even) {
+.leaderboard-table tr {
+    margin-bottom: 15px;
     background-color: #f4f4f4;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.leaderboard-table td {
+    padding: 10px;
+    font-size: 14px;
+    text-align: right;
+    position: relative;
+    padding-left: 50%;
+}
+
+.leaderboard-table td:before {
+    content: attr(data-label);
+    position: absolute;
+    left: 6px;
+    width: 45%;
+    padding-right: 10px;
+    white-space: nowrap;
+    font-weight: bold;
+    text-align: left;
 }
 
 .stars img {
@@ -115,6 +135,67 @@
     }
 
     .leaderboard h1 {
+        font-size: 32px;
+    }
+
+    .leaderboard-table {
+        display: table;
+    }
+
+    .leaderboard-table thead {
+        display: table-header-group;
+    }
+
+    .leaderboard-table tbody {
+        display: table-row-group;
+    }
+
+    .leaderboard-table tr {
+        display: table-row;
+        margin-bottom: 0;
+        border: none;
+        border-radius: 0;
+        background-color: transparent;
+    }
+
+    .leaderboard-table th, .leaderboard-table td {
+        display: table-cell;
+        padding: 12px;
+        font-size: 14px;
+        text-align: left;
+        border: 1px solid #ddd;
+    }
+
+    .leaderboard-table th {
+        background-color: #0073e6;
+        color: white;
+        font-weight: bold;
+    }
+
+    .leaderboard-table td {
+        padding-left: 12px;
+    }
+
+    .leaderboard-table td:before {
+        content: none;
+    }
+
+    .leaderboard-table tbody tr:nth-child(even) {
+        background-color: #f4f4f4;
+    }
+
+    .stars img {
+        width: 18px;
+        height: 18px;
+    }
+
+    .badge {
+        font-size: 12px;
+    }
+}
+
+@media screen and (min-width: 1024px) {
+    .leaderboard h1 {
         font-size: 36px;
     }
 
@@ -129,30 +210,6 @@
     }
 
     .badge {
-        padding: 5px 10px;
         font-size: 14px;
-    }
-
-    .badge-description {
-        padding: 40px;
-    }
-
-    .badge-list {
-        flex-direction: row;
-        flex-wrap: wrap;
-        justify-content: space-around;
-    }
-
-    .badge-item {
-        width: 45%;
-    }
-
-    .share-game h2 {
-        font-size: 24px;
-    }
-
-    .share-game button {
-        padding: 10px 20px;
-        font-size: 16px;
     }
 }
