@@ -188,9 +188,3 @@ function displayFinalScore() {
     feedbackEl.style.display = 'none';
     nextButton.style.display = 'none';
 }
-
-// Function to open Level 2
-function openLevel2() {
-    window.open("level2.html", "_blank");
-}
-
