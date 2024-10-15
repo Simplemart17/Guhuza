@@ -1,0 +1,98 @@
+/* Main Content Styling */
+.dashboard-container {
+    padding: 40px 20px;
+    background-color: #ffffff;
+}
+
+.welcome-section {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.welcome-section h1 {
+    font-size: 36px;
+    margin-bottom: 20px;
+}
+
+.welcome-section p {
+    font-size: 18px;
+    color: #333;
+}
+
+.how-to-play,
+.benefits-of-playing {
+    margin-bottom: 40px;
+}
+
+.how-to-play h2,
+.benefits-of-playing h2 {
+    font-size: 24px;
+    color: #333;
+    margin-bottom: 15px;
+}
+
+.how-to-play p,
+.benefits-of-playing ul {
+    font-size: 18px;
+    color: #555;
+}
+
+.benefits-of-playing ul {
+    list-style: disc;
+    margin-left: 20px;
+}
+
+button {
+    background-color: #0073e6;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #0073e6;
+}
+
+/* Footer Styling */
+.site-footer {
+    background-color: #1a1a1a;
+    color: #ffffff;
+    padding: 20px 0;
+    margin-top: 40px;
+}
+
+.footer-top {
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.footer-nav a {
+    color: #ffffff;
+    margin: 0 10px;
+    text-decoration: none;
+}
+
+.footer-nav a:hover {
+    text-decoration: underline;
+}
+
+.footer-bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.footer-bottom p {
+    margin: 0;
+}
+
+.social-links a {
+    margin-left: 10px;
+}
+
+.social-links img {
+    width: 24px;
+    height: 24px;
+}

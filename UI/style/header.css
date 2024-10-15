@@ -1,0 +1,79 @@
+.container {
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between; /* Spreads the content: logo on left, buttons on right */
+}
+
+/* Header Styling */
+.site-header {
+  background-color: #1a1a1a; /* Dark color similar to Guhuza's navigation bar */
+  padding: 15px 0;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.site-header .logo img {
+  height: 50px;
+}
+
+.main-nav {
+  display: inline-block;
+  margin-left: 50px;
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 20px;
+}
+
+.nav-links li a {
+  color: #ffffff;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 16px;
+}
+
+.nav-links li a:hover {
+  color: #0073e6;
+}
+
+/* Positioning Sign In and Sign Up Buttons in Top Right Corner */
+.auth-buttons {
+  margin-left: auto;
+  display: flex;
+  gap: 10px;
+}
+
+.auth-buttons .btn {
+  text-decoration: none;
+  padding: 8px 15px;
+  border-radius: 5px;
+  font-weight: bold;
+}
+
+.auth-buttons .btn-signin {
+  background-color: transparent;
+  border: 2px solid #ffffff; /* White border for 'Sign In' button */
+  color: #ffffff;
+}
+
+.auth-buttons .btn-signin:hover {
+  background-color: #0073e6;
+  color: #ffffff;
+}
+
+.auth-buttons .btn-signup {
+  background-color: #0073e6; /* Blue background for 'Sign Up' */
+  color: #ffffff;
+  border: none;
+}
+
+.auth-buttons .btn-signup:hover {
+  background-color: #005bb5; /* Darker blue on hover */
+}
