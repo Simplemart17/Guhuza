@@ -18,6 +18,7 @@
             <a href="index.html" class="logo">
                 <img src="https://guhuza.com/logo/logo_white_large.png" alt="Guhuza Logo">
             </a>
+            <div class="menu-toggle">☰</div>
             <nav class="main-nav">
                 <ul class="nav-links">
                     <li><a href="index.html">Home</a></li>
@@ -159,7 +160,7 @@
 
     <!-- Footer -->
     <footer class="site-footer">
-        <div class="container">
+        <div class="footer-container">
             <div class="footer-top">
                 <div class="footer-nav">
                     <a href="https://guhuza.com/terms">Terms of Service</a> |
@@ -196,20 +197,8 @@
     </footer>
 
 
-    <script>
-        // Share game on social media
-        function shareGame(platform) {
-            let url = '';
-            if (platform === 'facebook') {
-                url = 'https://www.facebook.com/sharer/sharer.php?u=' + document.location.href;
-            } else if (platform === 'twitter') {
-                url = 'https://twitter.com/intent/tweet?url=' + document.location.href;
-            } else if (platform === 'linkedin') {
-                url = 'https://www.linkedin.com/shareArticle?mini=true&url=' + document.location.href;
-            }
-            window.open(url, '_blank');
-        }
-    </script>
+    <script src="js/header.js"></script>
+    <script src="js/leaderboard.js"></script>
 </body>
 
 </html>
