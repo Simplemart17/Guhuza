@@ -18,6 +18,7 @@
             <a href="index.html" class="logo">
                 <img src="https://guhuza.com/logo/logo_white_large.png" alt="Guhuza Logo">
             </a>
+            <div class="menu-toggle">☰</div>
             <nav class="main-nav">
                 <ul class="nav-links">
                     <li><a href="index.html">Home</a></li>
@@ -128,7 +129,7 @@
 
     <!-- Footer -->
     <footer class="site-footer">
-        <div class="container">
+        <div class="footer-container">
             <div class="footer-top">
                 <div class="footer-nav">
                     <a href="https://guhuza.com/terms">Terms of Service</a> |
@@ -136,88 +137,32 @@
                     <a href="https://guhuza.com/contact">Contact Us</a>
                 </div>
             </div>
-            <div class="footer-bottom">
+            <div class="copyright">
                 <p>© 2024 Guhuza. All Rights Reserved.</p>
-                <div class="social-links">
-                    <a href="https://www.facebook.com/Guhuza/"><img
-                            src="https://www.freeiconspng.com/uploads/facebook-logo-facebook-logo-9.png"
-                            alt="Facebook"></a>
-                    <a href="https://x.com/torecruiters/status/1485730169029468163"><img
-                            src="https://static.vecteezy.com/system/resources/previews/027/395/710/non_2x/twitter-brand-new-logo-3-d-with-new-x-shaped-graphic-of-the-world-s-most-popular-social-media-free-png.png"
-                            alt="Twitter"></a>
-                    <a href="https://ca.linkedin.com/company/guhuza"><img
-                            src="https://itcnet.gr/wp-content/uploads/2020/09/Linkedin-logo-on-transparent-Background-PNG-.png"
-                            alt="LinkedIn"></a>
-                    <a href="https://www.instagram.com/guhuza_/"><img
-                            src="https://static.vecteezy.com/system/resources/previews/018/930/413/non_2x/instagram-logo-instagram-icon-transparent-free-png.png"
-                            alt="Instagram"></a>
-                    <a href="https://www.youtube.com/@Guhuza"><img
-                            src="https://www.freeiconspng.com/uploads/hd-youtube-logo-png-transparent-background-20.png"
-                            alt="YouTube"></a>
-                    <a href="https://www.tiktok.com/@guhuza"><img
-                            src="https://pngimg.com/uploads/tiktok/tiktok_PNG12.png" alt="TikTok"></a>
-                    <a href="https://open.spotify.com/show/4jQy8DF6ut5lHxpYMjKxA2"><img
-                            src="https://images.vexels.com/media/users/3/137413/isolated/preview/4acb8e52632aa9b7c874b878eaf02bc4-spotify-icon-logo-by-vexels.png"
-                            alt="Spotify"></a>
-                </div>
+            </div>
+            <div class="social-links">
+                <a href="https://www.facebook.com/Guhuza/"><img
+                        src="https://www.freeiconspng.com/uploads/facebook-logo-facebook-logo-9.png" alt="Facebook"></a>
+                <a href="https://x.com/torecruiters/status/1485730169029468163"><img
+                        src="https://static.vecteezy.com/system/resources/previews/027/395/710/non_2x/twitter-brand-new-logo-3-d-with-new-x-shaped-graphic-of-the-world-s-most-popular-social-media-free-png.png"
+                        alt="Twitter"></a>
+                <a href="https://ca.linkedin.com/company/guhuza"><img
+                        src="https://itcnet.gr/wp-content/uploads/2020/09/Linkedin-logo-on-transparent-Background-PNG-.png"
+                        alt="LinkedIn"></a>
+                <a href="https://www.instagram.com/guhuza_/"><img
+                        src="https://static.vecteezy.com/system/resources/previews/018/930/413/non_2x/instagram-logo-instagram-icon-transparent-free-png.png"
+                        alt="Instagram"></a>
+                <a href="https://www.tiktok.com/@guhuza"><img src="https://pngimg.com/uploads/tiktok/tiktok_PNG12.png"
+                        alt="TikTok"></a>
+                <a href="https://www.youtube.com/@Guhuza"><img
+                        src="https://www.freeiconspng.com/uploads/hd-youtube-logo-png-transparent-background-20.png"
+                        alt="YouTube"></a>
             </div>
         </div>
     </footer>
 
-
-    <script>
-
-        // Check the user's progress from local storage
-        window.onload = function () {
-            const beginnerCompleted = localStorage.getItem('beginnerCompleted');
-            const intermediateCompleted = localStorage.getItem('intermediateCompleted');
-
-            // If Beginner is completed, enable the Intermediate button
-            if (beginnerCompleted) {
-                document.getElementById('startIntermediate').disabled = false;
-            }
-
-            // If Intermediate is completed, enable the Advanced button
-            if (intermediateCompleted) {
-                document.getElementById('startAdvanced').disabled = false;
-            }
-        };
-
-        // Function to mark Beginner as completed
-        function completeBeginner() {
-            localStorage.setItem('beginnerCompleted', true);
-            alert('Beginner level completed! Intermediate unlocked.');
-            window.location.href = 'UI/level3.html'; // Redirect to the next level
-        }
-
-        // Function to mark Intermediate as completed
-        function completeIntermediate() {
-            localStorage.setItem('intermediateCompleted', true);
-            alert('Intermediate level completed! Advanced unlocked.');
-            window.location.href = 'level7.html'; // Redirect to the next level
-        }
-
-        // Copy the referral link to clipboard
-        function copyReferral() {
-            const referralLink = document.getElementById('referral-link');
-            referralLink.select();
-            document.execCommand('copy');
-            alert("Referral link copied!");
-        }
-
-        // Share the web link on social media
-        function shareOnSocial(platform) {
-            let url = '';
-            if (platform === 'facebook') {
-                url = 'https://www.facebook.com/sharer/sharer.php?u=' + document.location.href;
-            } else if (platform === 'twitter') {
-                url = 'https://twitter.com/intent/tweet?url=' + document.location.href;
-            } else if (platform === 'linkedin') {
-                url = 'https://www.linkedin.com/shareArticle?mini=true&url=' + document.location.href;
-            }
-            window.open(url, '_blank');
-        }
-    </script>
+    <script src="js/header.js"></script>
+    <script src="js/play.js"></script>
 </body>
 
 </html>
