@@ -1,46 +1,82 @@
 /* Layout: Sidebar and Main Content */
 .play-container {
     display: flex;
-    padding: 40px;
+    justify-content: space-between;
+    padding: 30px;
     background-color: #ffffff;
 }
 
-/* Sidebar for Levels */
+h1, h2 {
+    font-family: 'Arial', sans-serif; /* Ensure consistent font */
+    color: #2c3e50;
+    margin-bottom: 1rem;
+}
+
+/* Sidebar Styling */
 .level-sidebar {
     width: 25%;
-    background-color: #f8f8f8;
+    list-style-type: none;
+    background-color: #f4f4f4; /* Clean, light background */
     padding: 20px;
-    border-right: 1px solid #ddd;
-    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
 }
 
 .level-sidebar h2 {
     font-size: 24px;
     margin-bottom: 20px;
+    color: #2c3e50;
 }
 
-.level-sidebar ul {
-    list-style: none;
+.level-list {
+    list-style-type: none;
     padding-left: 0;
+    margin: 0;
 }
 
-.level-sidebar ul ul {
-    padding-left: 20px;
-}
-
-.level-sidebar li {
+.level-list li {
+    padding: 10px;
+    border-radius: 5px;
     margin-bottom: 10px;
+    font-size: 18px;
+    font-weight: bold;
+    color: white;
+    text-align: center;
+}
+
+.beginner-level li {
+    background-color: #6fe600; /* Fresh green for Beginner */
+}
+
+.intermediate-level li {
+    background-color: #f1c40f; /* Yellow for Intermediate */
+}
+
+.advanced-level li {
+    background-color: #e74c3c; /* Red for Advanced */
+}
+
+/* Add hover effect */
+.level-list li:hover {
+    opacity: 0.8;
+    cursor: pointer;
 }
 
 /* Main Content */
 .play-main {
-    width: 75%;
-    padding-left: 40px;
+    width: 70%;
+    background-color: #ffecd2;
+    background-image: linear-gradient(to right, #ffecd2 0%, #befc9f 100%);
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
+
 
 .game-intro h1 {
     font-size: 36px;
     margin-bottom: 20px;
+
 }
 
 .game-intro p {
@@ -53,15 +89,22 @@
 .levels {
     display: flex;
     justify-content: space-between;
+    padding: 20px 40px 40px 40px;
     margin-bottom: 40px;
 }
 
-.level-card {
-    background-color: #f4f4f4;
-    padding: 20px;
-    border-radius: 8px;
-    width: 30%;
-    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+.level-card button {
+    background-color: #3498db; /* same blue color from dashboard */
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.level-card button:hover {
+    background-color: #2980b9; /* Match the hover effect */
 }
 
 .level-card h3 {
@@ -93,9 +136,17 @@
 }
 
 /* Referral and Share */
-.referral-share h2, .referral-share h3 {
+.referral-share h2{
     font-size: 24px;
     margin-bottom: 20px;
+
+}
+
+.referral-share h3{
+    font-size: 24px;
+    margin-bottom: 20px;
+    padding-top: 40px;
+    text-align: center;
 }
 
 .referral-share input {
@@ -107,7 +158,7 @@
 }
 
 .referral-share button {
-    background-color: #0073e6;
+    background-color: #3498db;
     color: white;
     padding: 10px 20px;
     border: none;
@@ -116,12 +167,19 @@
 }
 
 .referral-share button:hover {
-    background-color: #005bb5;
+    background-color: #2980b9;
+}
+
+.share-options {
+    display: flex;
+    justify-content: center; /* Center horizontally */
+    gap: 10px; /* Add space between buttons */
+    margin-top: 20px;
 }
 
 .share-options button {
-    margin: 10px 5px;
-    background-color: #555;
+    
+    background-color: #57d56a;
     color: white;
     padding: 10px 20px;
     border: none;
@@ -130,5 +188,5 @@
 }
 
 .share-options button:hover {
-    background-color: #333;
+    background-color: #39a40b;
 }
