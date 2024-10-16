@@ -35,22 +35,22 @@
         <aside class="level-sidebar">
             <h2>Game Levels Overview</h2>
             <ul>
-                <li><strong>Beginner</strong>
-                    <ul style="background-color: #6fe600 ;">
+                <li style="list-style-type: none;"><strong>Beginner</strong>
+                    <ul class="level-list beginner-level">
                         <li>Level 1</li>
                         <li>Level 2</li>
                     </ul>
                 </li>
-                <li><strong>Intermediate</strong>
-                    <ul style="background-color: yellow;">
+                <li style="list-style-type: none;"><strong>Intermediate</strong>
+                    <ul class="level-list intermediate-level">
                         <li>Level 3</li>
                         <li>Level 4</li>
                         <li>Level 5</li>
                         <li>Level 6</li>
                     </ul>
                 </li>
-                <li><strong>Advanced</strong>
-                    <ul style="background-color: red;">
+                <li style="list-style-type: none;"><strong>Advanced</strong>
+                    <ul class="level-list advanced-level">
                         <li>Level 7</li>
                         <li>Level 8</li>
                         <li>Level 9</li>
@@ -59,7 +59,8 @@
                 </li>
             </ul>
         </aside>
-
+    
+    
         <!-- Main Content for Game Levels and Details -->
         <div class="play-main">
             <section class="game-intro">
@@ -114,6 +115,7 @@
                 <h2>Refer a Friend</h2>
                 <p>Earn bonus points by referring Guhuza to a friend. Share your unique referral link and invite them to
                     play.</p>
+                    <br>
                 <input type="text" id="referral-link" value="https://guhuza.com/referral?user=YOUR_USERNAME" readonly>
                 <button onclick="copyReferral()">Copy Referral Link</button>
 
