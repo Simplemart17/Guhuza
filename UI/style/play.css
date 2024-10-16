@@ -2,7 +2,7 @@
 .play-container {
     display: flex;
     justify-content: space-between;
-    padding: 40px;
+    padding: 30px;
     background-color: #ffffff;
 }
 
@@ -15,6 +15,7 @@ h1, h2 {
 /* Sidebar Styling */
 .level-sidebar {
     width: 25%;
+    list-style-type: none;
     background-color: #f4f4f4; /* Clean, light background */
     padding: 20px;
     border-radius: 10px;
@@ -28,7 +29,7 @@ h1, h2 {
 }
 
 .level-list {
-    list-style: none;
+    list-style-type: none;
     padding-left: 0;
     margin: 0;
 }
@@ -66,7 +67,7 @@ h1, h2 {
     width: 70%;
     background-color: #ffecd2;
     background-image: linear-gradient(to right, #ffecd2 0%, #befc9f 100%);
-    padding-left: 40px;
+    padding: 40px;
     border-radius: 10px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
@@ -75,6 +76,7 @@ h1, h2 {
 .game-intro h1 {
     font-size: 36px;
     margin-bottom: 20px;
+
 }
 
 .game-intro p {
@@ -87,6 +89,7 @@ h1, h2 {
 .levels {
     display: flex;
     justify-content: space-between;
+    padding: 20px 40px 40px 40px;
     margin-bottom: 40px;
 }
 
@@ -133,9 +136,17 @@ h1, h2 {
 }
 
 /* Referral and Share */
-.referral-share h2, .referral-share h3 {
+.referral-share h2{
     font-size: 24px;
     margin-bottom: 20px;
+
+}
+
+.referral-share h3{
+    font-size: 24px;
+    margin-bottom: 20px;
+    padding-top: 40px;
+    text-align: center;
 }
 
 .referral-share input {
@@ -159,9 +170,16 @@ h1, h2 {
     background-color: #2980b9;
 }
 
+.share-options {
+    display: flex;
+    justify-content: center; /* Center horizontally */
+    gap: 10px; /* Add space between buttons */
+    margin-top: 20px;
+}
+
 .share-options button {
-    margin: 10px 5px;
-    background-color: #555;
+    
+    background-color: #57d56a;
     color: white;
     padding: 10px 20px;
     border: none;
@@ -170,5 +188,5 @@ h1, h2 {
 }
 
 .share-options button:hover {
-    background-color: #333;
+    background-color: #39a40b;
 }

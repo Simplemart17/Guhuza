@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Leaderboard - Guhuza</title>
+    <link rel="stylesheet" href="leaderboard.css"> <!-- Link to the CSS file -->
+</head>
+<body>
+    <!-- Header / Navigation Bar -->
+    <header class="site-header">
+        <div class="container">
+            <a href="dashboard.html" class="logo">
+                <img src="https://guhuza.com/logo/logo_white_large.png" alt="Guhuza Logo">
+            </a>
+            <nav class="main-nav">
+                <ul class="nav-links">
+                    <li><a href="dashboard.html">Home</a></li>
+                    <li><a href="play.html">Play</a></li>
+                    <li><a href="leaderboard.html">Leaderboard</a></li>
+                    <li><a href="profile.html">Profile</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Leaderboard Section -->
+    <div class="leaderboard-container">
+        <section class="leaderboard">
+            <h1>Leaderboard</h1>
+            <table class="leaderboard-table">
+                <thead>
+                    <tr>
+                        <th>Rank</th>
+                        <th>Username</th>
+                        <th>Level</th>
+                        <th>Level Completed</th>
+                        <th>Badges Earned</th>
+                        <th>Referred Users</th>
+                        <th>Achievements</th>
+                        <th>Profile Visited by Recruiters</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td>john_doe</td>
+                        <td>Advanced</td>
+                        <td>
+                            <span class="stars">
+                                <img src="https://upload.wikimedia.org/wikipedia/commons/4/44/Plain_Yellow_Star.png" alt="Star">
+                                <img src="https://upload.wikimedia.org/wikipedia/commons/4/44/Plain_Yellow_Star.png" alt="Star">
+                                <img src="https://upload.wikimedia.org/wikipedia/commons/4/44/Plain_Yellow_Star.png" alt="Star">
+                                <img src="https://upload.wikimedia.org/wikipedia/commons/4/44/Plain_Yellow_Star.png" alt="Star">
+                                <img src="https://upload.wikimedia.org/wikipedia/commons/4/44/Plain_Yellow_Star.png" alt="Star">
+                                <img src="https://upload.wikimedia.org/wikipedia/commons/4/44/Plain_Yellow_Star.png" alt="Star">
+                                <img src="https://upload.wikimedia.org/wikipedia/commons/4/44/Plain_Yellow_Star.png" alt="Star">
+                                <img src="https://upload.wikimedia.org/wikipedia/commons/4/44/Plain_Yellow_Star.png" alt="Star">
+                                
+                            </span>
+                        </td>
+                        <td>
+                            <span class="badge">Job Seeker Pro</span>
+                            <span class="badge">Interview Ace</span>
+                        </td>
+                        <td>
+                            johndoe@example.com<br>
+                            janedoe@example.com
+                        </td>
+                        <td>Completed all levels, Referred 2 users</td>
+                        <td>10 Visits</td>
+                    </tr>
+                    <!-- Additional rows for other users -->
+                    <tr>
+                        <td>2</td>
+                        <td>jane_doe</td>
+                        <td>Intermediate</td>
+                        <td>
+                            <span class="stars">
+                                <img src="https://upload.wikimedia.org/wikipedia/commons/4/44/Plain_Yellow_Star.png" alt="Star">
+                                <img src="https://upload.wikimedia.org/wikipedia/commons/4/44/Plain_Yellow_Star.png" alt="Star">
+                                <img src="https://upload.wikimedia.org/wikipedia/commons/4/44/Plain_Yellow_Star.png" alt="Star">
+                            </span>
+                        </td>
+                        <td>
+                            <span class="badge">Interview Pro</span>
+                        </td>
+                        <td>janedoe@example.com</td>
+                        <td>Completed Beginner, Referred 1 user</td>
+                        <td>5 Visits</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <!-- Badge Descriptions Section -->
+        <section class="badge-description">
+            <h2>Badges You Can Earn</h2>
+            <div class="badge-list">
+                <div class="badge-item">
+                    <span class="badge">Job Seeker Pro</span>
+                    <p>Awarded for completing all levels of the Beginner tier.</p>
+                </div>
+                <div class="badge-item">
+                    <span class="badge">Interview Ace</span>
+                    <p>Awarded for answering all interview questions correctly in the Intermediate tier.</p>
+                </div>
+                <div class="badge-item">
+                    <span class="badge">Referral Master</span>
+                    <p>Awarded for referring at least 20 friends to the Guhuza platform.</p>
+                </div>
+                <div class="badge-item">
+                    <span class="badge">Expert Recruiter</span>
+                    <p>Earned when your profile is visited by at least 50 recruiters.</p>
+                </div>
+                <div class="badge-item">
+                    <span class="badge">Networking Guru</span>
+                    <p>Awarded for connecting with 10 or more recruiters on the platform. </p>
+                </div>
+                <div class="badge-item">
+                    <span class="badge">Fast Learner</span>
+                    <p>Earned by completing a level with all correct answers in under 2 minutes.</p>
+                </div>
+                <div class="badge-item">
+                    <span class="badge">Social Sharer</span>
+                    <p>Earned by sharing your leaderboard position on social media.</p>
+                </div>
+                <div class="badge-item">
+                    <span class="badge">Top Recruit</span>
+                    <p>Given to players who achieve the highest score in the Advanced level.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Share the Game Section -->
+        <section class="share-game">
+            <h2>Share the Game</h2>
+            <button onclick="shareGame('facebook')">Share on Facebook</button>
+            <button onclick="shareGame('twitter')">Share on Twitter</button>
+            <button onclick="shareGame('linkedin')">Share on LinkedIn</button>
+        </section>
+    </div>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-top">
+                <div class="footer-nav">
+                    <a href="https://guhuza.com/terms">Terms of Service</a> |
+                    <a href="https://guhuza.com/privacy">Privacy Policy</a> |
+                    <a href="https://guhuza.com/contact">Contact Us</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© 2024 Guhuza. All Rights Reserved.</p>
+                <div class="social-links">
+                    <a href="https://www.facebook.com/Guhuza/"><img src="https://www.freeiconspng.com/uploads/facebook-logo-facebook-logo-9.png" alt="Facebook"></a>
+                    <a href="https://x.com/torecruiters/status/1485730169029468163"><img src="https://static.vecteezy.com/system/resources/previews/027/395/710/non_2x/twitter-brand-new-logo-3-d-with-new-x-shaped-graphic-of-the-world-s-most-popular-social-media-free-png.png" alt="Twitter"></a>
+                    <a href="https://ca.linkedin.com/company/guhuza"><img src="https://itcnet.gr/wp-content/uploads/2020/09/Linkedin-logo-on-transparent-Background-PNG-.png" alt="LinkedIn"></a>
+                    <a href="https://www.instagram.com/guhuza_/"><img src="https://static.vecteezy.com/system/resources/previews/018/930/413/non_2x/instagram-logo-instagram-icon-transparent-free-png.png" alt="Instagram"></a>
+                    <a href="https://www.youtube.com/@Guhuza"><img src="https://www.freeiconspng.com/uploads/hd-youtube-logo-png-transparent-background-20.png" alt="YouTube"></a>
+                    <a href="https://www.tiktok.com/@guhuza"><img src="https://pngimg.com/uploads/tiktok/tiktok_PNG12.png" alt="TikTok" ></a>
+                    <a href="https://open.spotify.com/show/4jQy8DF6ut5lHxpYMjKxA2"><img src="https://images.vexels.com/media/users/3/137413/isolated/preview/4acb8e52632aa9b7c874b878eaf02bc4-spotify-icon-logo-by-vexels.png" alt="Spotify"></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+
+    <script>
+        // Share game on social media
+        function shareGame(platform) {
+            let url = '';
+            if (platform === 'facebook') {
+                url = 'https://www.facebook.com/sharer/sharer.php?u=' + document.location.href;
+            } else if (platform === 'twitter') {
+                url = 'https://twitter.com/intent/tweet?url=' + document.location.href;
+            } else if (platform === 'linkedin') {
+                url = 'https://www.linkedin.com/shareArticle?mini=true&url=' + document.location.href;
+            }
+            window.open(url, '_blank');
+        }
+    </script>
+</body>
+</html>

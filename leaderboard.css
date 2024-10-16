@@ -1,0 +1,206 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+}
+
+.container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* Header Styling */
+.site-header {
+    background-color: #1a1a1a; /* Dark color similar to Guhuza's navigation bar */
+    padding: 15px 0;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.site-header .logo img {
+    height: 50px;
+}
+
+.main-nav {
+    display: inline-block;
+    margin-left: 50px;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+}
+
+.nav-links li a {
+    color: #ffffff;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 16px;
+}
+
+.nav-links li a:hover {
+    color: #0073e6;
+}
+
+/* Leaderboard Styles */
+.leaderboard-container {
+    padding: 40px;
+    background-color: #ffffff;
+}
+
+.leaderboard h1 {
+    font-size: 36px;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.leaderboard-table {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.leaderboard-table th, .leaderboard-table td {
+    padding: 15px;
+    border: 1px solid #ddd;
+    font-size: 16px;
+}
+
+.leaderboard-table th {
+    background-color: #0073e6;
+    color: white;
+    
+}
+
+.leaderboard-table tbody tr:nth-child(even) {
+    background-color: #f4f4f4;
+}
+
+.stars img {
+    width: 20px;
+    height: 20px;
+}
+
+/* Badges */
+.badge {
+    display: inline-block;
+    background-color: #4CAF50;
+    color: white;
+    padding: 5px 10px;
+    border-radius: 5px;
+    margin-right: 5px;  /* Horizontal space between badges */
+    margin-bottom: 5px; /* Vertical space between badges */
+}
+
+/* Badge Description Section */
+.badge-description {
+    padding: 40px;
+    background-color: #f9f9f9;
+    margin-top: 40px;
+}
+
+.badge-description h2 {
+    font-size: 28px;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.badge-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+.badge-item {
+    width: 45%;
+    margin-bottom: 20px;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.badge-item p {
+    margin-top: 10px;
+    font-size: 14px;
+    color: #555;
+}
+
+
+/* Share Game Buttons */
+.share-game {
+    text-align: center;
+}
+
+.share-game h2 {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+.share-game button {
+    background-color: #0073e6;
+    color: white;
+    padding: 10px 20px;
+    margin: 5px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.share-game button:hover {
+    background-color: #005bb5;
+}
+
+/* Footer Styling */
+.site-footer {
+    background-color: #1a1a1a;
+    color: #ffffff;
+    padding: 20px 0;
+    margin-top: 40px;
+}
+
+.footer-top {
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.footer-nav a {
+    color: #ffffff;
+    margin: 0 10px;
+    text-decoration: none;
+}
+
+.footer-nav a:hover {
+    text-decoration: underline;
+}
+
+.footer-bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.footer-bottom p {
+    margin: 0;
+}
+
+.social-links a {
+    margin-left: 10px;
+}
+
+.social-links img {
+    width: 24px;
+    height: 24px;
+}
