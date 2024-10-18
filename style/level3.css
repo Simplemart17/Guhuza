@@ -1,43 +1,84 @@
 .quiz-container {
-    max-width: 800px;
-    margin: 40px auto;
-    padding: 20px;
-    background-color: #f9f9f9;
-    border: 1px solid #0073e6;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  width: 80%;
+  max-width: 800px;
+  margin: 50px auto;
+  background-color: white;
+  padding:30px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Similar box shadow */
+}
+
+.quiz-container h2 {
+  text-align: center;
+  color: #0073e6;
+  margin-bottom: 20px;
+  font-size: 2em; /* Adjust the font size for consistency */
+
+
+}
+
+
+.question {
+  font-size: 1.2em;
+  padding: 20px; 
+  margin-bottom: 20px;
+  text-align: center; /* Center align question for consistency */
+  background-color: #f9f9f9; /* Light background to differentiate questions */
+  border-radius: 10px;
+  border: 1px solid #ddd; /* Add border around each question */
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
+}
+
+.options {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.option {
+  background-color: #fff;
+  border: 2px solid #0073e6; /* Same border style as Level 2 */
+  padding: 12px;
+  margin: 10px;
+  border-radius: 5px; /* Rounded corners to match Level 2 */
+  cursor: pointer;
+  font-size: 1em;
+  transition: background-color 0.3s ease, color 0.3s ease; /* Smooth transitions */
+}
+
+.option:hover {
+  background-color: #0073e6; /* Blue hover effect */
+  color: white;
+}
+
+.categories {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.category {
+  background-image: linear-gradient(to right, #307fd9 0%, #6dc4e4 100%);
+  border: 2px solid #0073e6; /* Same border style */
+  padding: 12px;
+  margin: 10px;
+  border-radius: 5px; /* Rounded corners */
+  text-align: center; /* Center text */
+}
+
+.draggable {
+  opacity: 0.5;
+}
+
+/* Responsive Design */
+@media (max-width: 600px) {
+  .quiz-container {
+      width: 95%;
+      padding: 20px;
   }
-  
-  .question {
-    margin-bottom: 20px;
-  }
-  
-  .options {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-  }
-  
+
   .option {
-    background-color: #fff;
-    border: 1px solid #ddd;
-    padding: 10px;
-    margin: 10px;
-    cursor: move;
+      font-size: 0.9em;
   }
-  
-  .categories {
-    display: flex;
-    justify-content: center;
-    margin-top: 20px;
-  }
-  
-  .category {
-    background-color: #fff;
-    border: 1px solid #ddd;
-    padding: 10px;
-    margin: 10px;
-  }
-  
-  .draggable {
-    opacity: 0.5;
-  }
+}

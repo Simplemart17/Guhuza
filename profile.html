@@ -31,6 +31,7 @@
     </header>
 
     <!-- Profile Section -->
+    <!-- Profile Section -->
     <div class="profile-container">
         <section class="profile-info">
             <h1>Resume Overview</h1>
@@ -78,19 +79,51 @@
                     </select>
 
                     <label for="education-input">Education:</label>
-                    <textarea id="education-input">B.Sc. in Computer Science</textarea>
+                    <select id="education-input">
+                        <option value="Bachelor">Bachelor's Degree</option>
+                        <option value="Master">Master's Degree</option>
+                        <option value="PhD">PhD</option>
+                        <option value="Diploma">Diploma</option>
+                        <option value="High School">High School</option>
+                    </select>
 
+                    <!-- Skills Input Section -->
                     <label for="skills-input">Skills:</label>
-                    <textarea id="skills-input">JavaScript, Python, SQL, Web Development</textarea>
+                    <div id="skills-input-container">
+                        <select id="skills-input">
+                            <option value="">Select a skill</option>
+                            <option value="Programming Languages">Programming Languages</option>
+                            <option value="Frameworks and Libraries">Framework and Libraries</option>
+                            <option value="Database Management">Database Management</option>
+                            <option value="Web Development">Web Development</option>
+                            <option value="Operating Systems">Operating Systems</option>
+                            <option value="Project Management">Project Management</option>
+                            <option value="Data Analysis">Data Analysis</option>
+                            <option value="SEO Tools">SEO Tools</option>
+                            <option value="Content Management">Content Management</option>
+                            <option value="Social Media Management">Social Media Management</option>
+                            <option value="Digital Advertising">Digital Advertising</option>
+                            <option value="Others">Others</option>
+                            
+                        </select>
+                    </div>
+                    <!-- Display selected skills as tags -->
+                    <div id="skills-container"></div>
 
                     <label for="experience-input">Work Experience:</label>
-                    <textarea id="experience-input">2 years as a Frontend Developer at XYZ Company</textarea>
+                    <select id="experience-input">
+                        <option value="1-2">1-2 years</option>
+                        <option value="3-5">3-5 years</option>
+                        <option value="5-10">5-10 years</option>
+                        <option value="10+">10+ years</option>
+                    </select>
 
                     <button type="submit">Save Changes</button>
                 </form>
             </div>
         </section>
     </div>
+
 
     <!-- Footer -->
     <footer class="site-footer">
