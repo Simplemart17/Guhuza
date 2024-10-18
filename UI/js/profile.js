@@ -30,4 +30,43 @@ document
       document.getElementById("employment-status-input").value;
 
     alert("Profile updated successfully!");
-  });
+  })
+
+  document.addEventListener("DOMContentLoaded", function () {
+    const skillsInput = document.getElementById("skills-input");
+    const skillsContainer = document.getElementById("skills-container");
+    let selectedSkills = [];
+
+    skillsInput.addEventListener("change", function () {
+        const selectedSkill = skillsInput.value;
+        
+        // Ensure the skill is not already added and is valid
+        if (selectedSkill && !selectedSkills.includes(selectedSkill)) {
+            selectedSkills.push(selectedSkill);
+            renderSkills();
+        }
+
+        // Reset dropdown
+        skillsInput.value = "";
+    });
+
+    // Function to render the selected skills as tags
+    function renderSkills() {
+        skillsContainer.innerHTML = ""; // Clear previous tags
+
+        selectedSkills.forEach((skill, index) => {
+            const skillTag = document.createElement("div");
+            skillTag.classList.add("skill-tag");
+            skillTag.innerHTML = `
+                ${skill} <button onclick="removeSkill(${index})">x</button>
+            `;
+            skillsContainer.appendChild(skillTag);
+        });
+    }
+
+    // Function to remove skill from selectedSkills array
+    window.removeSkill = function (index) {
+        selectedSkills.splice(index, 1);
+        renderSkills();
+    }
+});

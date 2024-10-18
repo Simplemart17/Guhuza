@@ -6,6 +6,19 @@
     align-items: center;
     padding: 40px 20px; /* Add padding to avoid merging with footer */
 }
+/* Add background image to the auth-container */
+.auth-container {
+    background-image: url('../images/recruitment.jpg'); /* Replace with your actual image path */
+    background-size: cover; /* Ensures the image covers the entire container */
+    background-position: center; /* Centers the image */
+    background-repeat: no-repeat; /* Prevents the image from repeating */
+    min-height: 100vh; /* Makes sure it covers the full viewport height */
+    display: flex; /* For centering the form */
+    justify-content: center;
+    align-items: center;
+    
+}
+
 
 /* Form box styling */
 .auth-box {
