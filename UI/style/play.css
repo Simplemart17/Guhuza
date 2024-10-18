@@ -190,3 +190,22 @@ h1, h2 {
 .share-options button:hover {
     background-color: #39a40b;
 }
+
+@media (max-width: 768px) {
+    .play-container {
+        flex-direction: column; /* Stack sidebar and main content */
+    }
+
+    .level-sidebar {
+        flex: 1 1 auto; /* Allow sidebar to take full width */
+    }
+
+    .play-main {
+        flex: 1 1 auto; /* Allow main content to take full width */
+    }
+}
+
+img {
+    max-width: 100%;
+    height: auto; /* Maintain aspect ratio */
+}
