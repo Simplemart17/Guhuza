@@ -62,7 +62,7 @@ const level2Questions = [
 let quizData = level2Questions;
 let currentQuestion = 0;
 let score = 0;
-let level = 2;
+let level = 4;
 let correctAnswersInLevel = 0;
 const questionsPerLevel = 5;
 const levelThreshold = 3; // Minimum score to pass the level
@@ -121,8 +121,8 @@ function checkAnswer(selectedIndex) {
     nextButton.style.display = 'block';
     updateScoreboard();
 
-    // Check if Level 2 is complete
-    if (level === 2 && currentQuestion === questionsPerLevel - 1) {
+    // Check if Level 4 is complete
+    if (level === 4 && currentQuestion === questionsPerLevel - 1) {
         checkLevelProgression();
     }
 }

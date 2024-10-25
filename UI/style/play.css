@@ -65,8 +65,7 @@ h1, h2 {
 /* Main Content */
 .play-main {
     width: 70%;
-    background-color: #ffecd2;
-    background-image: linear-gradient(to right, #ffecd2 0%, #befc9f 100%);
+    background-color: #faf9f7;
     padding: 40px;
     border-radius: 10px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
