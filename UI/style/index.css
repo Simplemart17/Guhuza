@@ -76,7 +76,7 @@ p, ul {
 }
 
 button {
-    background-color: #3498db;
+    background-color: #0c0d0d;
     color: white;
     border: none;
     padding: 10px 20px;
@@ -88,7 +88,7 @@ button {
 }
 
 button:hover {
-    background-color: #2980b9;
+    background-color: #505152;
 }
 
 

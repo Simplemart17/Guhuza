@@ -59,8 +59,8 @@
 }
 
 .category {
-  background-image: linear-gradient(to right, #307fd9 0%, #6dc4e4 100%);
-  border: 2px solid #0073e6; /* Same border style */
+  background-color: #0073e6; 
+  border: 2px solid #d6d7d8; /* Same border style */
   padding: 12px;
   margin: 10px;
   border-radius: 5px; /* Rounded corners */

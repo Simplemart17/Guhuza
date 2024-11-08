@@ -92,18 +92,25 @@ h1, h2 {
     margin-bottom: 40px;
 }
 
-.level-card button {
-    background-color: #3498db; /* same blue color from dashboard */
+.start-quiz {
+    display: flex;
+    justify-content: center; /* Center the button horizontally */
+    margin-bottom: 40px; 
+}
+
+.start-quiz button {
+    background-color: #0a0b0b; /* Same blue color from dashboard */
     color: white;
-    padding: 10px 20px;
+    padding: 10px 400px;
+    margin-right: 20px;
+    margin-bottom: 20px; /* Right margin to give space on the right side */
     border: none;
     border-radius: 5px;
     cursor: pointer;
-    transition: background-color 0.3s ease;
 }
 
-.level-card button:hover {
-    background-color: #2980b9; /* Match the hover effect */
+.start-quiz button:hover {
+    background-color: #585a5b; /* Match the hover effect */
 }
 
 .level-card h3 {
@@ -117,7 +124,7 @@ h1, h2 {
 }
 
 .level-card button {
-    background-color: #0073e6;
+    background-color: #0b0b0b;
     color: white;
     padding: 10px 20px;
     border: none;
@@ -131,7 +138,7 @@ h1, h2 {
 }
 
 .level-card button:hover:not(:disabled) {
-    background-color: #0073e6;
+    background-color: #535354;
 }
 
 /* Referral and Share */
@@ -157,7 +164,7 @@ h1, h2 {
 }
 
 .referral-share button {
-    background-color: #3498db;
+    background-color: #0c0c0c;
     color: white;
     padding: 10px 20px;
     border: none;
@@ -166,7 +173,7 @@ h1, h2 {
 }
 
 .referral-share button:hover {
-    background-color: #2980b9;
+    background-color: #676869;
 }
 
 .share-options {
@@ -192,19 +199,6 @@ h1, h2 {
 
 @media (max-width: 768px) {
     .play-container {
-        flex-direction: column; /* Stack sidebar and main content */
+        grid-template-columns: 1fr;
     }
-
-    .level-sidebar {
-        flex: 1 1 auto; /* Allow sidebar to take full width */
-    }
-
-    .play-main {
-        flex: 1 1 auto; /* Allow main content to take full width */
-    }
-}
-
-img {
-    max-width: 100%;
-    height: auto; /* Maintain aspect ratio */
 }
