@@ -5,11 +5,17 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node ./app/index.js",
     "deploy": "gh-pages -d UI"
   },
   "author": "",
   "license": "MIT",
   "dependencies": {
-    "gh-pages": "^6.2.0"
+    "@prisma/client": "^5.21.0",
+    "dotenv": "^16.4.5",
+    "express": "^4.21.1",
+    "gh-pages": "^6.2.0",
+    "mysql2": "^3.11.3",
+    "prisma": "^5.21.0"
   }
 }
