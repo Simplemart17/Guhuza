@@ -77,3 +77,17 @@
     color: #0073e6;
     text-decoration: none;
 }
+
+#error {
+    color: red;
+    margin-top: -5px;
+    margin-bottom: 3px;
+    display: none;
+}
+
+#success {
+    color: green;
+    margin-top: -5px;
+    margin-bottom: 3px;
+    display: none;
+}
