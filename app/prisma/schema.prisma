@@ -8,7 +8,29 @@ datasource db {
 }
 
 model users {
-  user_id    Int     @id @default(autoincrement())
-  user_email String? @unique(map: "user_email_UNIQUE") @db.VarChar(45)
-  address    String? @db.VarChar(45)
+  user_id                    Int     @id @default(autoincrement())
+  user_fullname              String? @db.VarChar(45)
+  user_email                 String? @unique(map: "user_email_UNIQUE") @db.VarChar(45)
+  user_password              String? @db.VarChar(45)
+  user_level                 Int?    @db.Int
+  user_last_answerd_question Int?    @db.Int
+}
+
+model leadrboards {
+  leaderboard_id Int  @id @default(autoincrement())
+  user_id        Int? @db.Int
+  total_point    Int? @db.Int
+}
+
+model points {
+  point_id Int  @id @default(autoincrement())
+  user_id  Int? @db.Int
+  point    Int? @db.Int
+}
+
+model invites {
+  invite_id    Int      @id @default(autoincrement())
+  user_id      Int?     @db.Int
+  invite_email String?  @unique(map: "user_email_UNIQUE") @db.VarChar(45)
+  status       Boolean? @default(false)
 }
