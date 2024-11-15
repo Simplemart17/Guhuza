@@ -30,6 +30,7 @@ window.onload = async function () {
   levelStartButton.addEventListener("click", async () => {
     // reset question number
     currentQuestion = 0;
+    correctAnswersInLevel = 0;
     level++;
     const token = localStorage.getItem("token");
 
