@@ -34,16 +34,19 @@
         <div class="auth-box">
             <h2>Sign Up</h2>
             <form id="sign-up-form" onsubmit="return validateSignUp()" action="welcome.html">
-                <label for="username">Username:</label>
-                <input type="text" id="username" name="username" required placeholder="Choose a username" minlength="3">
+                <label for="user_email">Email Address:</label>
+                <input type="email" id="user_email" name="user_email" required placeholder="Enter your email address" required>
+
+                <label for="user_fullname">Full Name:</label>
+                <input type="text" id="user_fullname" name="user_fullname" required placeholder="Enter your full name" required>
                 
-                <label for="password">Password:</label>
-                <input type="password" id="password" name="password" required placeholder="Create a password" minlength="8" maxlength="10">
+                <label for="user_password">Password:</label>
+                <input type="password" id="user_password" name="user_password" required placeholder="Create a password" minlength="8" maxlength="10">
                 
-                <label for="confirm-password">Confirm Password:</label>
-                <input type="password" id="confirm-password" name="confirm-password" required placeholder="Confirm your password">
+                <label for="confirm_password">Confirm Password:</label>
+                <input type="password" id="confirm_password" name="confirm_password" required placeholder="Confirm your password">
                 
-                <button type="submit" onclick="location.href='index.html'">Sign Up</button>
+                <button type="submit">Sign Up</button>
             </form>
             <p>Already have an account? <a href="signin.html">Sign In</a></p>
         </div>

@@ -1,3 +1,6 @@
+const url = "http://localhost:3000/api/v1";
+const token = localStorage.getItem("token");
+
 // Preview uploaded profile image
 function previewImage(event) {
   const reader = new FileReader();
@@ -9,7 +12,7 @@ function previewImage(event) {
 }
 
 // Edit profile function (shows editable fields)
-function editProfile() {
+function editProfile() { //TODO: complete profile update api
   const form = document.querySelector(".profile-edit-section");
   form.style.display = form.style.display === "block" ? "none" : "block";
 }
@@ -30,43 +33,47 @@ document
       document.getElementById("employment-status-input").value;
 
     alert("Profile updated successfully!");
-  })
+  });
 
-  document.addEventListener("DOMContentLoaded", function () {
-    const skillsInput = document.getElementById("skills-input");
-    const skillsContainer = document.getElementById("skills-container");
-    let selectedSkills = [];
+document.addEventListener("DOMContentLoaded", function () {
+  const skillsInput = document.getElementById("skills-input");
+  const skillsContainer = document.getElementById("skills-container");
+  let selectedSkills = [];
 
-    skillsInput.addEventListener("change", function () {
-        const selectedSkill = skillsInput.value;
-        
-        // Ensure the skill is not already added and is valid
-        if (selectedSkill && !selectedSkills.includes(selectedSkill)) {
-            selectedSkills.push(selectedSkill);
-            renderSkills();
-        }
+  if (!token) {
+    window.location.href = "signin.html";
+  }
 
-        // Reset dropdown
-        skillsInput.value = "";
-    });
+  skillsInput.addEventListener("change", function () {
+    const selectedSkill = skillsInput.value;
 
-    // Function to render the selected skills as tags
-    function renderSkills() {
-        skillsContainer.innerHTML = ""; // Clear previous tags
+    // Ensure the skill is not already added and is valid
+    if (selectedSkill && !selectedSkills.includes(selectedSkill)) {
+      selectedSkills.push(selectedSkill);
+      renderSkills();
+    }
 
-        selectedSkills.forEach((skill, index) => {
-            const skillTag = document.createElement("div");
-            skillTag.classList.add("skill-tag");
-            skillTag.innerHTML = `
+    // Reset dropdown
+    skillsInput.value = "";
+  });
+
+  // Function to render the selected skills as tags
+  function renderSkills() {
+    skillsContainer.innerHTML = ""; // Clear previous tags
+
+    selectedSkills.forEach((skill, index) => {
+      const skillTag = document.createElement("div");
+      skillTag.classList.add("skill-tag");
+      skillTag.innerHTML = `
                 ${skill} <button onclick="removeSkill(${index})">x</button>
             `;
-            skillsContainer.appendChild(skillTag);
-        });
-    }
+      skillsContainer.appendChild(skillTag);
+    });
+  }
 
-    // Function to remove skill from selectedSkills array
-    window.removeSkill = function (index) {
-        selectedSkills.splice(index, 1);
-        renderSkills();
-    }
+  // Function to remove skill from selectedSkills array
+  window.removeSkill = function (index) {
+    selectedSkills.splice(index, 1);
+    renderSkills();
+  };
 });

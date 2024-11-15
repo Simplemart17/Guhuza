@@ -1,3 +1,6 @@
+const url = "http://localhost:3000/api/v1"; // TODO: use env file for dynamic url
+
+// TODO: complete api to add points for each accepted invite through links
 // Share game on social media
 function shareGame(platform) {
   let url = "";
@@ -12,4 +15,66 @@ function shareGame(platform) {
       document.location.href;
   }
   window.open(url, "_blank");
+}
+
+//TODO: map completed levels to the badge on the leaderboard
+window.onload = async function () {
+  const token = localStorage.getItem("token");
+  if (!token) {
+    window.location.href = "signin.html";
+  }
+
+  await fetchLeaderboard();
+};
+
+async function fetchLeaderboard() {
+  try {
+    const response = await fetch(`${url}/leaderboard`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        token,
+      },
+    });
+
+    if (!response.ok) {
+      throw new Error("Failed to fetch leaderboard data");
+    }
+
+    const data = await response.json();
+    displayLeaderboard(data);
+  } catch (error) {
+    console.error(error);
+  }
+}
+
+function displayLeaderboard(data) {
+  const leaderboardData = document.getElementById("leaderboard-table");
+
+  if (data) {
+    data.leaderboard.forEach((board, index) => {
+      leaderboardData.innerHTML += `
+      <table>
+        <tbody>
+                    <tr>
+                        <td data-label="Rank">${index + 1}</td>
+                        <td data-label="Full Name">${board.user.fullname}</td>
+                        <td data-label="Total Point">${board.total_point}</td>
+                        <td data-label="Level">${board.user.level}</td>
+                        <td data-label="Badges Earned">
+                            <span class="badge">Job Seeker Pro</span>
+                            <span class="badge">Interview Ace</span>
+                        </td>
+                        <td data-label="Referred Users">
+                            gauravarora5@gmail.com<br>
+                            md45678@hotmail.com
+                        </td>
+                        <td data-label="Achievements">Completed all levels, Referred 2 users</td>
+                        <td data-label="Profile Visited by Recruiters">10 Visits</td>
+                    </tr>
+        </tbody>
+      </table>
+    `;
+    });
+  }
 }
