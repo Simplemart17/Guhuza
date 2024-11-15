@@ -24,7 +24,7 @@ model Leaderboard {
   total_point Int       @default(0)
   createdAt   DateTime  @default(now()) @db.Timestamp(0)
   updatedAT   DateTime? @db.Timestamp(0)
-  userId      Int
+  userId      Int       @unique
   user        User      @relation(fields: [userId], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "Leaderboard_ibfk_1")
 
   @@index([userId], map: "userId")

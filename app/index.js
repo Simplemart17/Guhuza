@@ -81,7 +81,7 @@ app.post("/auth/login", async (req, res) => {
   });
 });
 
-app.post("/register", async (req, res) => {
+app.post("/auth/register", async (req, res) => {
   const hashPassword = bcrypt.hashSync(req.body.password, 10);
   const userObj = await prisma.user.create({
     data: {
@@ -163,12 +163,53 @@ app.get("/accept-invite", (req, res) => {
   res.send("Hello, World!");
 });
 
-app.get("/leaderboard", async (req, res) => {
+app.get("/logout", (req, res) => {
   res.send("Hello, World!");
 });
 
-app.get("/logout", (req, res) => {
-  res.send("Hello, World!");
+app.post("/leaderboard", verifyToken, async (req, res) => {
+  try {
+    // Get all points for the user
+    const points = await prisma.point.findMany({
+      where: {
+        userId: req.user.id,
+      },
+    });
+
+    // Sum up the points
+    const totalPoints = points.reduce((sum, point) => sum + point.point, 0);
+
+    // Fetch user information
+    const user = await prisma.user.findUnique({
+      where: { id: req.user.id },
+      select: {
+        id: true,
+        email: true,
+        fullname: true,
+        // Add any other user fields you want to include
+      },
+    });
+
+    // Update or create the leaderboard entry for the user
+    await prisma.leaderboard.upsert({
+      where: { userId: req.user.id },
+      update: { total_point: totalPoints },
+      create: {
+        userId: req.user.id,
+        total_point: totalPoints,
+      },
+    });
+
+    res.json({
+      status: 200,
+      message: "Leaderboard updated successfully!",
+      totalPoints,
+      user, // Include user information in the response
+    });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: "Failed to update leaderboard" });
+  }
 });
 
 app.listen(port, () => {
