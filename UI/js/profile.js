@@ -1,4 +1,4 @@
-const url = "http://localhost:3000";
+const url = "http://localhost:3000/api/v1";
 const token = localStorage.getItem("token");
 
 // Preview uploaded profile image
@@ -12,7 +12,7 @@ function previewImage(event) {
 }
 
 // Edit profile function (shows editable fields)
-function editProfile() {
+function editProfile() { //TODO: complete profile update api
   const form = document.querySelector(".profile-edit-section");
   form.style.display = form.style.display === "block" ? "none" : "block";
 }

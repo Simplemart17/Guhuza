@@ -1,4 +1,4 @@
-const url = "http://localhost:3000";
+const url = "http://localhost:3000/api/v1";
 
 // Check the user's progress from local storage
 window.onload = async function () {
@@ -36,20 +36,6 @@ window.onload = async function () {
     document.getElementById("startAdvanced").disabled = false;
   }
 };
-
-// Function to mark Beginner as completed
-function completeBeginner() {
-  localStorage.setItem("beginnerCompleted", true);
-  alert("Beginner level completed! Intermediate unlocked.");
-  window.location.href = "UI/level3.html"; // Redirect to the next level
-}
-
-// Function to mark Intermediate as completed
-function completeIntermediate() {
-  localStorage.setItem("intermediateCompleted", true);
-  alert("Intermediate level completed! Advanced unlocked.");
-  window.location.href = "level7.html"; // Redirect to the next level
-}
 
 // Copy the referral link to clipboard
 function copyReferral() {

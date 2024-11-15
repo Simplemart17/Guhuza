@@ -1,5 +1,6 @@
-const url = "http://localhost:3000";
+const url = "http://localhost:3000/api/v1"; // TODO: use env file for dynamic url
 
+// TODO: complete api to add points for each accepted invite through links
 // Share game on social media
 function shareGame(platform) {
   let url = "";
@@ -16,6 +17,7 @@ function shareGame(platform) {
   window.open(url, "_blank");
 }
 
+//TODO: map completed levels to the badge on the leaderboard
 window.onload = async function () {
   const token = localStorage.getItem("token");
   if (!token) {

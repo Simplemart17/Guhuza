@@ -1,4 +1,4 @@
-const url = "http://localhost:3000";
+const url = "http://localhost:3000/api/v1";
 let res;
 
 let currentQuestion;
@@ -6,13 +6,14 @@ let score = 0;
 let level;
 let correctAnswersInLevel = 0;
 const questionsPerLevel = 10;
-const levelThreshold = 5; // Minimum score to pass the level
+const levelThreshold = 5; // Minimum score to pass the level // TODO: set the variable in env for flexibility
 const levelStartButton = document.getElementById("level-button");
 
-let timer; // Variable to hold the timer
-let timeLeft = 60; // Countdown time in seconds
+let timer;
+let timeLeft = 60;
 
-// Load the first question
+//TODO: randomize quiz answer options
+//TODO: store correctly answered questions and remove from questions shown to the user
 window.onload = async function () {
   const token = localStorage.getItem("token");
 
@@ -93,15 +94,14 @@ async function loadQuestion(index) {
   // Update each answer button with the corresponding options
   answerButtons.forEach((button, idx) => {
     if (res[index].answers[idx]) {
-      button.innerText = res[index].answers[idx]; // Set button text to the option
-      button.disabled = false; // Re-enable the button in case it was disabled
-      button.style.display = "block"; // Ensure the button is visible
+      button.innerText = res[index].answers[idx];
+      button.disabled = false;
+      button.style.display = "block";
     } else {
-      button.style.display = "none"; // Hide unused buttons if options are less than 4
+      button.style.display = "none";
     }
   });
 
-  // Hide feedback and next button initially
   feedbackEl.style.display = "none";
   nextButton.style.display = "none";
 }
@@ -118,13 +118,13 @@ async function checkAnswer(selectedIndex) {
 
   currentQuestion++;
 
-  const responseTime = 60 - timeLeft; // Calculate how long the user took to respond
-  let points = 5; // Default points for the fastest answer
+  const responseTime = 60 - timeLeft;
+  let points = 5;
 
-  if (responseTime > 30) { // If the answer was given after 30 seconds
-    points = 2; // Assign lower points
-  } else if (responseTime > 45) { // If the answer was given after 45 seconds
-    points = 1; // Assign even lower points
+  if (responseTime > 30) {
+    points = 2;
+  } else if (responseTime > 45) {
+    points = 1;
   }
 
   if (selectedIndex === correctAnswer) {
@@ -134,7 +134,7 @@ async function checkAnswer(selectedIndex) {
     correctAnswersInLevel++;
     let body = {
       question: currentQuestion,
-      point: points, // Use the calculated points
+      point: points,
     };
 
     await fetch(`${url}/updateQuestion`, {
@@ -177,9 +177,9 @@ async function checkAnswer(selectedIndex) {
 
 async function loadNextQuestion() {
   // Reset the timer to 60 seconds
-  timeLeft = 60; // Reset countdown time
-  clearInterval(timer); // Clear the existing timer
-  startTimer(); // Start the timer again
+  timeLeft = 60;
+  clearInterval(timer);
+  startTimer();
 
   if (currentQuestion < res.length) {
     loadQuestion(currentQuestion);
@@ -192,13 +192,13 @@ function checkLevelProgression() {
   const levelButton = document.getElementById("level-button");
   const levelStatusEl = document.getElementById("level-status");
 
-  // Check if the user passed Level 1 (minimum 3 correct answers)
+  // Check if the user passed Level 1 (minimum 5 correct answers)
   if (correctAnswersInLevel >= levelThreshold) {
     levelStatusEl.innerText = `Level ${level} Achieved!`;
     levelButton.innerHTML = `Start level ${level + 1}`;
-    levelButton.style.display = "block"; // Show Level 2 button if the user passes
+    levelButton.style.display = "block"; // Show next Level button if the user passes
   } else {
-    levelStatusEl.innerText = `Level ${level} Failed. You need at least 3 correct answers.`;
+    levelStatusEl.innerText = `Level ${level} Failed. You need at least 5 correct answers.`;
   }
   levelStatusEl.style.display = "block";
 
@@ -238,7 +238,6 @@ function startTimer() {
       feedbackEl.className = "feedback incorrect";
       feedbackEl.style.display = "block";
       nextButton.style.display = "block";
-      // Optionally, you can call loadNextQuestion() here
     } else {
       timerEl.innerText = `Time left: ${timeLeft}s`;
       // Change timer color to red if less than 20 seconds

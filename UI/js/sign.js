@@ -1,11 +1,9 @@
-const url = "http://localhost:3000";
+const url = "http://localhost:3000/api/v1";
 
 const signInForm = document.getElementById("sign-in-form");
 
 // Validation for Sign Up Form
 function validateSignUp() {
-  const email = document.getElementById("email").value;
-  const fullname = document.getElementById("fullname").value;
   const password = document.getElementById("password").value;
   const confirmPassword = document.getElementById("confirm-password").value;
 
