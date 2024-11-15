@@ -3,10 +3,10 @@ const url = "http://localhost:3000";
 // Check the user's progress from local storage
 window.onload = async function () {
   const token = localStorage.getItem("token");
-  const referralEmail = document.getElementById("referral-link");
+  const referralId = document.getElementById("referral-link");
 
   if (!token) {
-    window.location.href = "signin.html"
+    window.location.href = "signin.html";
   }
   // get user profile
   const userDetails = await fetch(`${url}/profile`, {
@@ -19,8 +19,8 @@ window.onload = async function () {
 
   const res = await userDetails.json();
 
-  if (res.email) {
-    referralEmail.value = `${url}/invite?email=${res.email}`
+  if (res.id) {
+    referralId.value = `${url}/invite?userId=${res.id}`;
   }
 
   const beginnerCompleted = localStorage.getItem("beginnerCompleted");

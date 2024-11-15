@@ -4,6 +4,8 @@ const { PrismaClient } = require("@prisma/client");
 const jwt = require("jsonwebtoken");
 const bcrypt = require("bcrypt");
 const cors = require("cors");
+const nodemailer = require("nodemailer");
+const crypto = require("crypto");
 
 const app = express();
 const port = process.env.PORT || 3000;
@@ -36,6 +38,34 @@ async function verifyToken(req, res, next) {
     return res.status(403).json({ error: "Authentication fails!" });
   }
   return next();
+}
+
+function sendEmail(mailOptions) {
+  const transporter = nodemailer.createTransport({
+    service: "Gmail",
+    auth: {
+      user: process.env.EMAIL_USER,
+      pass: process.env.EMAIL_PASS,
+    },
+  });
+
+  // const mailOptions = {
+  //   from: process.env.EMAIL_USER,
+  //   to: email,
+  //   subject: "You're Invited!",
+  //   text: `Hello,\n\nYou have been invited by ${data.fullname} to join our platform. Please click the link below to register:\n\nhttp://localhost:3000/accept-invite?email=${data.email}\n\nBest regards,\nYour App Team`,
+  // };
+
+  transporter.sendMail(mailOptions, (error, info) => {
+    if (error) {
+      return res.status(500).json({ error: "Failed to send invite email" });
+    }
+    res.json({
+      status: 201,
+      message: "Invite sent successfully!",
+      invite,
+    });
+  });
 }
 
 app.get("/", (req, res) => {
@@ -155,18 +185,6 @@ app.patch("/updateLevel", verifyToken, async (req, res) => {
   res.json({ message: "updated!" });
 });
 
-app.get("/invite", async (req, res) => {
-  res.send("Hello, World!");
-});
-
-app.get("/accept-invite", (req, res) => {
-  res.send("Hello, World!");
-});
-
-app.get("/logout", (req, res) => {
-  res.send("Hello, World!");
-});
-
 app.post("/leaderboard", verifyToken, async (req, res) => {
   try {
     // Get all points for the user
@@ -215,6 +233,108 @@ app.post("/leaderboard", verifyToken, async (req, res) => {
     console.error(error);
     res.status(500).json({ error: "Failed to update leaderboard" });
   }
+});
+
+app.post("/invite", verifyToken, async (req, res) => {
+  const invitedEmail = req.body.email;
+  const userId = req.query.userId;
+
+  // Check if the user exists
+  const user = await prisma.user.findUnique({
+    where: { id: userId },
+  });
+
+  if (!user) {
+    return res.status(404).json({ message: "User not found" });
+  }
+
+  // Check if the email exists
+  const inviteEmail = await prisma.invite.findUnique({
+    where: { email: invitedEmail },
+  });
+
+  if (inviteEmail) {
+    return res.status(400).json({ message: "User already invited!" });
+  }
+
+  // create invite token
+  const inviteToken = crypto.randomBytes(32).toString("hex");
+
+  // Create an invite
+  const invite = await prisma.invite.create({
+    data: {
+      email: invitedEmail,
+      userId,
+      inviteToken,
+      updatedAt: new Date(),
+    },
+  });
+
+  const mailOptions = {
+    from: "doctorfunmi@gmail.com",
+    to: email,
+    subject: "You're Invited!",
+    text: `Hello,\n\nYou have been invited by ${user.fullname} to join our platform. Please click the link below to register:\n\nhttp://localhost:3000/accept-invite?token=${inviteToken}\n\nBest regards,\nYour App Team`,
+  };
+
+  sendEmail(mailOptions);
+
+  res.json({
+    status: 201,
+    message: "Invite sent successfully!",
+    invite,
+  });
+});
+
+app.post("/accept-invite", async (req, res) => {
+  const { token } = req.query;
+  const { email, password, fullname } = req.body;
+
+  // Find the invite
+  const invite = await prisma.invite.findUnique({
+    where: { token },
+  });
+
+  if (!invite) {
+    return res.status(404).json({ message: "Invite not found" });
+  }
+
+  // Check if the user already exists
+  const existingUser = await prisma.user.findUnique({
+    where: { email },
+  });
+
+  if (existingUser) {
+    return res
+      .status(400)
+      .json({ message: "User already exists, proceed to login" });
+  }
+
+  // Create a new user
+  const hashPassword = await bcrypt.hash(password, 10);
+  const newUser = await prisma.user.create({
+    data: {
+      email,
+      password: hashPassword,
+      fullname,
+      updatedAt: new Date(),
+    },
+  });
+
+  // Delete the invite after accepting it
+  await prisma.invite.delete({
+    where: { email },
+  });
+
+  res.json({
+    status: 201,
+    message: "User registered successfully!",
+    user: {
+      id: newUser.id,
+      email: newUser.email,
+      fullname: newUser.fullname,
+    },
+  });
 });
 
 app.listen(port, () => {
