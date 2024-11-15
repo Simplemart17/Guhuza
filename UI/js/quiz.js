@@ -15,6 +15,10 @@ let timeLeft = 60; // Countdown time in seconds
 // Load the first question
 window.onload = async function () {
   const token = localStorage.getItem("token");
+
+  if (!token) {
+    window.location.href = "signin.html"
+  }
   // get user profile
   const userDetails = await fetch(`${url}/profile`, {
     method: "GET",

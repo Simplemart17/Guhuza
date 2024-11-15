@@ -186,7 +186,7 @@ app.post("/leaderboard", verifyToken, async (req, res) => {
         id: true,
         email: true,
         fullname: true,
-        // Add any other user fields you want to include
+        level: true
       },
     });
 
