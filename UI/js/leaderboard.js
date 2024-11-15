@@ -35,14 +35,11 @@ async function fetchLeaderboard() {
       },
     });
 
-    console.log(response, "what is the response....")
-
     if (!response.ok) {
       throw new Error("Failed to fetch leaderboard data");
     }
 
     const data = await response.json();
-    console.log(data, "is the data there????")
     displayLeaderboard(data);
   } catch (error) {
     console.error(error);
@@ -50,18 +47,17 @@ async function fetchLeaderboard() {
 }
 
 function displayLeaderboard(data) {
-  console.log(data, "<><><<><><<")
   const leaderboardData = document.getElementById("leaderboard-table");
 
   if (data) {
-    data.forEach((board, index) => {
+    data.leaderboard.forEach((board, index) => {
       leaderboardData.innerHTML += `
       <table>
         <tbody>
                     <tr>
                         <td data-label="Rank">${index + 1}</td>
                         <td data-label="Full Name">${board.user.fullname}</td>
-                        <td data-label="Total Point">${board.totalPoints}</td>
+                        <td data-label="Total Point">${board.total_point}</td>
                         <td data-label="Level">${board.user.level}</td>
                         <td data-label="Badges Earned">
                             <span class="badge">Job Seeker Pro</span>

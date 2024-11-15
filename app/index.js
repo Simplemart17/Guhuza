@@ -179,17 +179,6 @@ app.post("/leaderboard", verifyToken, async (req, res) => {
     // Sum up the points
     const totalPoints = points.reduce((sum, point) => sum + point.point, 0);
 
-    // Fetch user information
-    const user = await prisma.user.findUnique({
-      where: { id: req.user.id },
-      select: {
-        id: true,
-        email: true,
-        fullname: true,
-        level: true
-      },
-    });
-
     // Update or create the leaderboard entry for the user
     await prisma.leaderboard.upsert({
       where: { userId: req.user.id },
@@ -200,11 +189,27 @@ app.post("/leaderboard", verifyToken, async (req, res) => {
       },
     });
 
+    // Fetch all leaderboard entries
+    const leaderboard = await prisma.leaderboard.findMany({
+      include: {
+        user: {
+          select: {
+            id: true,
+            email: true,
+            fullname: true,
+            level: true,
+          },
+        },
+      },
+      orderBy: {
+        total_point: "asc",
+      },
+    });
+
     res.json({
       status: 200,
       message: "Leaderboard updated successfully!",
-      totalPoints,
-      user, // Include user information in the response
+      leaderboard,
     });
   } catch (error) {
     console.error(error);
