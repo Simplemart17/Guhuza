@@ -1,5 +1,28 @@
+const url = "http://localhost:3000/api/v1";
+
 // Check the user's progress from local storage
-window.onload = function () {
+window.onload = async function () {
+  const token = localStorage.getItem("token");
+  const referralId = document.getElementById("referral-link");
+
+  if (!token) {
+    window.location.href = "signin.html";
+  }
+  // get user profile
+  const userDetails = await fetch(`${url}/profile`, {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+      token,
+    },
+  });
+
+  const res = await userDetails.json();
+
+  if (res.id) {
+    referralId.value = `${url}/invite?userId=${res.id}`;
+  }
+
   const beginnerCompleted = localStorage.getItem("beginnerCompleted");
   const intermediateCompleted = localStorage.getItem("intermediateCompleted");
 
@@ -13,20 +36,6 @@ window.onload = function () {
     document.getElementById("startAdvanced").disabled = false;
   }
 };
-
-// Function to mark Beginner as completed
-function completeBeginner() {
-  localStorage.setItem("beginnerCompleted", true);
-  alert("Beginner level completed! Intermediate unlocked.");
-  window.location.href = "UI/level3.html"; // Redirect to the next level
-}
-
-// Function to mark Intermediate as completed
-function completeIntermediate() {
-  localStorage.setItem("intermediateCompleted", true);
-  alert("Intermediate level completed! Advanced unlocked.");
-  window.location.href = "level7.html"; // Redirect to the next level
-}
 
 // Copy the referral link to clipboard
 function copyReferral() {

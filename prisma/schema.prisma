@@ -1,0 +1,56 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model Invite {
+  id          Int       @id @default(autoincrement())
+  email       String    @unique(map: "email") @db.VarChar(255)
+  inviteToken String    @unique
+  userId      Int
+  createdAt   DateTime  @default(now()) @db.Timestamp(0)
+  updatedAT   DateTime? @db.Timestamp(0)
+  user        User      @relation(fields: [userId], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "Invite_ibfk_1")
+
+  @@index([userId], map: "userId")
+}
+
+model Leaderboard {
+  id          Int       @id @default(autoincrement())
+  total_point Int       @default(0)
+  createdAt   DateTime  @default(now()) @db.Timestamp(0)
+  updatedAT   DateTime? @db.Timestamp(0)
+  userId      Int       @unique
+  user        User      @relation(fields: [userId], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "Leaderboard_ibfk_1")
+
+  @@index([userId], map: "userId")
+}
+
+model Point {
+  id        Int       @id @default(autoincrement())
+  point     Int       @default(0)
+  userId    Int
+  createdAt DateTime  @default(now()) @db.Timestamp(0)
+  updatedAT DateTime? @db.Timestamp(0)
+  user      User      @relation(fields: [userId], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "Point_ibfk_1")
+
+  @@index([userId], map: "userId")
+}
+
+model User {
+  id                     Int           @id @default(autoincrement())
+  fullname               String?       @db.VarChar(255)
+  email                  String        @unique(map: "email") @db.VarChar(255)
+  password               String        @db.VarChar(255)
+  level                  Int           @default(1)
+  last_question_answered Int           @default(0)
+  createdAt              DateTime      @default(now()) @db.Timestamp(0)
+  updatedAt              DateTime?     @db.Timestamp(0)
+  invite                 Invite[]
+  leaderboard            Leaderboard[]
+  point                  Point[]
+}
