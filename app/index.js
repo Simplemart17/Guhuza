@@ -66,7 +66,13 @@ app.post("/auth/login", async (req, res) => {
     });
   }
 
-  const token = jwt.sign({ email: req.body.email }, "$ecr3token");
+  // track login time
+  await prisma.user.update({
+    where: { email: req.body.email },
+    data: { updatedAt: new Date() },
+  });
+
+  const token = jwt.sign({ email: req.body.email, id: user.id }, "$ecr3token");
 
   res.json({
     status: 200,
@@ -95,8 +101,7 @@ app.post("/register", async (req, res) => {
 });
 
 app.get("/quiz", async (req, res) => {
-  const level = 1;
-  // const level = req.query.level;
+  const level = req.query.level;
   try {
     const response = await fetch(
       `https://api-ghz-v2.azurewebsites.net/api/v2/quiz?level=${level}`
@@ -108,15 +113,46 @@ app.get("/quiz", async (req, res) => {
   }
 });
 
-app.get("/profile", async (req, res) => {
-  const userProfile = prisma.user.findUnique({
+app.get("/profile", verifyToken, async (req, res) => {
+  const userProfile = await prisma.user.findUnique({
     where: {
-      email: req.body.email,
+      email: req.user.email,
+    },
+    include: {
+      invite: true,
+      leaderboard: true,
+      point: true,
     },
   });
 
-  console.log(userProfile);
-  res.send("Hello, World!");
+  res.json(userProfile);
+});
+
+app.patch("/updateQuestion", verifyToken, async (req, res) => {
+  await prisma.user.update({
+    where: { email: req.user.email },
+    data: { last_question_answered: req.body.question },
+  });
+
+  if (req.body.point) {
+    await prisma.point.create({
+      data: {
+        point: req.body.point,
+        userId: req.user.id,
+      },
+    });
+  }
+
+  res.json({ message: "updated!" });
+});
+
+app.patch("/updateLevel", verifyToken, async (req, res) => {
+  await prisma.user.update({
+    where: { email: req.user.email },
+    data: { level: req.body.level },
+  });
+
+  res.json({ message: "updated!" });
 });
 
 app.get("/invite", async (req, res) => {
