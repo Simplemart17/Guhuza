@@ -1,10 +1,10 @@
 ﻿# Guhuza
 
 ## Getting Stated
-- clone the application by run the following command in your terminal
-### Using ssh
+- Clone the application by run the following command in your terminal
+- Using ssh 
 ```git clone git@github.com:Simplemart17/guhuza.git```
-### Using http
+- Using http 
 ```https://github.com/Simplemart17/guhuza.git```
 
 - Navigate to `guhaza` directory
