@@ -1,5 +1,28 @@
+const url = "http://localhost:3000";
+
 // Check the user's progress from local storage
-window.onload = function () {
+window.onload = async function () {
+  const token = localStorage.getItem("token");
+  const referralEmail = document.getElementById("referral-link");
+
+  if (!token) {
+    window.location.href = "signin.html"
+  }
+  // get user profile
+  const userDetails = await fetch(`${url}/profile`, {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+      token,
+    },
+  });
+
+  const res = await userDetails.json();
+
+  if (res.email) {
+    referralEmail.value = `${url}/invite?email=${res.email}`
+  }
+
   const beginnerCompleted = localStorage.getItem("beginnerCompleted");
   const intermediateCompleted = localStorage.getItem("intermediateCompleted");
 
