@@ -18,7 +18,7 @@ app.use(app.get("appVersion"), userRouter);
 app.use(app.get("appVersion"), quizRouter);
 
 app.get("/", (req, res) => {
-  res.status(200).json({ message: "Hello, World!" });
+  res.status(200).json({ message: "Welcome to Guhuza!" });
 });
 
 app.listen(port, () => {
