@@ -1,4 +1,5 @@
-const url = "http://localhost:3000/api/v1";
+// const url = "http://localhost:3000/api/v1";
+const url = "https://guhuza.onrender.com/api/v1";
 
 // Check the user's progress from local storage
 window.onload = async function () {
