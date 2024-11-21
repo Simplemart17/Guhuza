@@ -1,5 +1,5 @@
-const url = "http://localhost:3000/api/v1"; // TODO: use env file for dynamic url
-// const url = "https://guhuza.onrender.com/api/v1"; // TODO: use env file for dynamic url
+// const url = "http://localhost:3000/api/v1"; // TODO: use env file for dynamic url
+const url = "https://guhuza.onrender.com/api/v1"; // TODO: use env file for dynamic url
 
 // TODO: complete api to add points for each accepted invite through links
 // Share game on social media
