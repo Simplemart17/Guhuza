@@ -1,5 +1,5 @@
 // const url = "http://localhost:3000/api/v1";
-const url = "https://guhuza.onrender.com/api/v1";
+// const url = "https://guhuza.onrender.com/api/v1";
 const token = localStorage.getItem("token");
 
 // Preview uploaded profile image

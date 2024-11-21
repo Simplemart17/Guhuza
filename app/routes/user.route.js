@@ -8,7 +8,7 @@ userRouter.post("/auth/login", user.login);
 userRouter.post("/auth/register", user.register);
 
 userRouter.get("/profile", verifyToken, user.profile);
-userRouter.post("/leaderboard", verifyToken, user.leaderboard);
+userRouter.get("/leaderboard", verifyToken, user.leaderboard);
 userRouter.post("/invite", user.inviteUser);
 userRouter.post("/accept-invite", user.acceptInvite);
 

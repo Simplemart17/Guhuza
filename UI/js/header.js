@@ -1,11 +1,11 @@
-const token = localStorage.getItem('token');
 
-document.addEventListener("DOMContentLoaded", () => {
+window.onload = async function () {
+  const token = localStorage.getItem('token');
   const menuToggle = document.querySelector(".menu-toggle");
   const mainNav = document.querySelector(".main-nav");
   const authButtons = document.querySelector(".auth-buttons");
-  const signIn = document.getElementById("btn-signin");
-  const signUp = document.getElementById("btn-signup");
+  const signIn = document.getElementById("signin");
+  const signUp = document.getElementById("signup");
 
   if (token) {
     signIn.innerText = "Log Out"
@@ -48,4 +48,4 @@ document.addEventListener("DOMContentLoaded", () => {
   authButtons.addEventListener("click", (event) => {
     event.stopPropagation();
   });
-});
+};

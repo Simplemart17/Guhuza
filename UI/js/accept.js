@@ -1,16 +1,16 @@
 const url = "http://localhost:3000/api/v1";
 // const url = "https://guhuza.onrender.com/api/v1";
 
-const signInForm = document.getElementById("sign-in-form");
+const acceptInviteForm = document.getElementById("accept-invite-form");
 
 // Validation for Sign Up Form
 function validateSignUp() {
   const password = document.getElementById("password").value;
-  const confirmPassword = document.getElementById("confirm-password").value;
+  const confirmPassword = document.getElementById("confirm_password").value;
 
   if (!validatePassword(password)) {
     alert(
-      "Password must be 8-10 characters long and include at least one special character."
+      "Password must be 8-10 characters long"
     );
     return false;
   }
@@ -25,24 +25,30 @@ function validateSignUp() {
 
 // Password validation function
 function validatePassword(password) {
-  const passwordPattern = /^(?=.*[!@#$%^&*])[A-Za-z\d!@#$%^&*]{8,10}$/;
+  const passwordPattern = /^[A-Za-z0-9]{8,10}$/;
   return passwordPattern.test(password);
 }
 
-signInForm.onsubmit = async (event) => {
+acceptInviteForm.onsubmit = async (event) => {
   event.preventDefault();
+
+  const urlParams = new URLSearchParams(window.location.search);
+  const userEmail = urlParams.get('email');
+
   const email = document.getElementById("email").value;
   const password = document.getElementById("password").value;
+  const fullname = document.getElementById("fullname").value;
   const error = document.getElementById("error");
   const success = document.getElementById("success");
 
   const login = {
     email,
     password,
+    fullname
   };
 
   try {
-    const response = await fetch(`${url}/auth/login`, {
+    const response = await fetch(`${url}/accept-invite?email=${userEmail}`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -52,7 +58,7 @@ signInForm.onsubmit = async (event) => {
 
     const res = await response.json();
 
-    if (res.status !== 200) {
+    if (res.status !== 201) {
       error.innerHTML = res.message;
       error.style.display = "block";
       setTimeout(() => {
@@ -60,13 +66,10 @@ signInForm.onsubmit = async (event) => {
       }, 3000);
     }
 
-    if (res.status === 200) {
-      const token = res.token;
-      localStorage.setItem("token", token);
-
+    if (res.status === 201) {
       success.style.display = "block";
       setTimeout(() => {
-        window.location.href = "quiz.html";
+        window.location.href = "signin.html";
       }, 3000);
     }
   } catch (error) {

@@ -7,7 +7,7 @@ async function verifyToken(req, res, next) {
     return res.status(403).json({ error: "Token is not provided" });
   }
   try {
-    const decoded = await jwt.verify(token, "$ecr3token"); //TODO: store in the env file
+    const decoded = await jwt.verify(token, process.env.JWT_SECRET);
     const user = await prisma.user.findUnique({
       where: {
         email: decoded.email,

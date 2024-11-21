@@ -1,5 +1,7 @@
-// const url = "http://localhost:3000/api/v1";
-const url = "https://guhuza.onrender.com/api/v1";
+const url = "http://localhost:3000/api/v1";
+// const url = "https://guhuza.onrender.com/api/v1";
+
+let referralUrl;
 
 // Check the user's progress from local storage
 window.onload = async function () {
@@ -19,9 +21,10 @@ window.onload = async function () {
   });
 
   const res = await userDetails.json();
-
+  userEmail = res.email;
+  referralUrl = `http://localhost:5500/UI/accept.html?email=${res.email}`
   if (res.id) {
-    referralId.value = `${url}/invite?userId=${res.id}`;
+    referralId.value = referralUrl;
   }
 
   const beginnerCompleted = localStorage.getItem("beginnerCompleted");
@@ -51,13 +54,13 @@ function shareOnSocial(platform) {
   let url = "";
   if (platform === "facebook") {
     url =
-      "https://www.facebook.com/sharer/sharer.php?u=" + document.location.href;
+      "https://www.facebook.com/sharer/sharer.php?u=" + referralUrl;
   } else if (platform === "twitter") {
-    url = "https://twitter.com/intent/tweet?url=" + document.location.href;
+    url = "https://twitter.com/intent/tweet?url=" + referralUrl;
   } else if (platform === "linkedin") {
     url =
       "https://www.linkedin.com/shareArticle?mini=true&url=" +
-      document.location.href;
+      referralUrl;
   }
   window.open(url, "_blank");
 }

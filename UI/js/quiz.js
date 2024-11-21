@@ -1,12 +1,12 @@
-// const url = "http://localhost:3000/api/v1";
-const url = "https://guhuza.onrender.com/api/v1";
+const url = "http://localhost:3000/api/v1";
+// const url = "https://guhuza.onrender.com/api/v1";
 let res;
 
 let currentQuestion;
 let score = 0;
 let level;
 let correctAnswersInLevel = 0;
-const questionsPerLevel = 10;
+// const questionsPerLevel = 10;
 const levelThreshold = 5; // Minimum score to pass the level // TODO: set the variable in env for flexibility
 const levelStartButton = document.getElementById("level-button");
 
@@ -19,7 +19,7 @@ window.onload = async function () {
   const token = localStorage.getItem("token");
 
   if (!token) {
-    window.location.href = "signin.html"
+    window.location.href = "signin.html";
   }
   // get user profile
   const userDetails = await fetch(`${url}/profile`, {
@@ -230,9 +230,16 @@ async function displayFinalScore() {
 
 // Add this function to start the countdown timer
 function startTimer() {
+  const feedbackEl = document.getElementById("feedback");
+  const nextButton = document.getElementById("next-question");
   const timerEl = document.getElementById("timer");
+  const answerButtons = document.querySelectorAll(".answers button");
+
   timer = setInterval(() => {
     if (timeLeft <= 0) {
+      // Disable all buttons after an answer is selected
+      answerButtons.forEach((button) => (button.disabled = true));
+
       clearInterval(timer);
       // Handle time up scenario
       feedbackEl.innerText = "Time's up! 👎";

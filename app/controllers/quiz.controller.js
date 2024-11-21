@@ -1,3 +1,5 @@
+const prisma = require("../model/index");
+
 const Quiz = {
   async quiz(req, res) {
     const level = req.query.level;
@@ -17,7 +19,7 @@ const Quiz = {
       where: { email: req.user.email },
       data: { last_question_answered: req.body.question },
     });
-  
+
     if (req.body.point) {
       await prisma.point.create({
         data: {
@@ -26,7 +28,27 @@ const Quiz = {
         },
       });
     }
-  
+
+    // Get all points for the user
+    const points = await prisma.point.findMany({
+      where: {
+        userId: req.user.id,
+      },
+    });
+
+    // Sum up the points
+    const totalPoints = points.reduce((sum, point) => sum + point.point, 0);
+
+    // Update or create the leaderboard entry for the user
+    await prisma.leaderboard.upsert({
+      where: { userId: req.user.id },
+      update: { total_point: totalPoints },
+      create: {
+        userId: req.user.id,
+        total_point: totalPoints,
+      },
+    });
+
     res.json({ message: "updated!" });
   },
 
@@ -35,9 +57,9 @@ const Quiz = {
       where: { email: req.user.email },
       data: { level: req.body.level },
     });
-  
+
     res.json({ message: "updated!" });
-  }
-}
+  },
+};
 
 module.exports = Quiz;

@@ -35,7 +35,7 @@ const User = {
       data: { updatedAt: new Date() },
     });
   
-    const token = jwt.sign({ email: req.body.email, id: user.id }, "$ecr3token"); //TODO: store in the env file
+    const token = jwt.sign({ email: req.body.email, id: user.id }, process.env.JWT_SECRET);
   
     res.json({
       status: 200,
@@ -79,26 +79,6 @@ const User = {
   },
   async leaderboard(req, res) {
     try {
-      // Get all points for the user
-      const points = await prisma.point.findMany({
-        where: {
-          userId: req.user.id,
-        },
-      });
-  
-      // Sum up the points
-      const totalPoints = points.reduce((sum, point) => sum + point.point, 0);
-  
-      // Update or create the leaderboard entry for the user
-      await prisma.leaderboard.upsert({
-        where: { userId: req.user.id },
-        update: { total_point: totalPoints },
-        create: {
-          userId: req.user.id,
-          total_point: totalPoints,
-        },
-      });
-  
       // Fetch all leaderboard entries
       const leaderboard = await prisma.leaderboard.findMany({
         include: {
@@ -112,7 +92,7 @@ const User = {
           },
         },
         orderBy: {
-          total_point: "asc",
+          total_point: "desc",
         },
       });
   
@@ -128,12 +108,11 @@ const User = {
   },
 
   async inviteUser(req, res) {
-    const invitedEmail = req.body.email;
-    const userId = req.query.userId;
+    const { email } = req.body;
   
-    // Check if the user exists
+    // Get user details
     const user = await prisma.user.findUnique({
-      where: { id: userId },
+      where: { email: req.user.email },
     });
   
     if (!user) {
@@ -142,7 +121,7 @@ const User = {
   
     // Check if the email exists
     const inviteEmail = await prisma.invite.findUnique({
-      where: { email: invitedEmail },
+      where: { email },
     });
   
     if (inviteEmail) {
@@ -156,20 +135,18 @@ const User = {
     const invite = await prisma.invite.create({
       data: {
         email: invitedEmail,
-        userId,
+        userId: user.id,
         inviteToken,
         updatedAt: new Date(),
       },
     });
   
     const mailOptions = {
-      from: "doctorfunmi@gmail.com",
-      to: email,
       subject: "You're Invited!",
-      text: `Hello,\n\nYou have been invited by ${user.fullname} to join our platform. Please click the link below to register:\n\nhttp://localhost:3000/accept-invite?token=${inviteToken}\n\nBest regards,\nYour App Team`,
+      text: `Hello,\n\nYou have been invited by ${user.fullname} to join our platform. Please click the link below to register:\n\nhttp://localhost:3000/accept?email=${user.email}\n\nBest regards,\nYour App Team`,
     };
-  
-    sendEmail(mailOptions);
+
+    sendEmail(mailOptions.subject, mailOptions.text, email )
   
     res.json({
       status: 201,
@@ -179,16 +156,19 @@ const User = {
   },
 
   async acceptInvite(req, res) {
-    const { token } = req.query;
+    const userEmail = req.query.email;
     const { email, password, fullname } = req.body;
   
     // Find the invite
     const invite = await prisma.invite.findUnique({
       where: { token },
     });
+    const user = await prisma.user.findUnique({
+      where: { email: userEmail },
+    });
   
-    if (!invite) {
-      return res.status(404).json({ message: "Invite not found" });
+    if (!user) {
+      return res.status(404).json({ message: "Referral link not working" });
     }
   
     // Check if the user already exists
@@ -210,6 +190,14 @@ const User = {
         password: hashPassword,
         fullname,
         updatedAt: new Date(),
+      },
+    });
+
+    // add 5 point for successful referral
+    await prisma.point.create({
+      data: {
+        point: 5,
+        userId: user.id,
       },
     });
   
