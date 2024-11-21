@@ -37,7 +37,7 @@ const Quiz = {
     });
 
     // Sum up the points
-    const totalPoints = points.reduce((sum, point) => sum + point.point, 0);
+    const totalPoints = points.reduce((sum, point) => sum + point.point, 0); //TODO: Make it work
 
     // Update or create the leaderboard entry for the user
     await prisma.leaderboard.upsert({
