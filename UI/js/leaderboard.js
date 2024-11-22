@@ -70,8 +70,7 @@ function displayLeaderboard(data) {
                             gauravarora5@gmail.com<br>
                             md45678@hotmail.com
                         </td>
-                        <td data-label="Achievements">Completed all levels, Referred 2 users</td>
-                        <td data-label="Profile Visited by Recruiters">10 Visits</td>
+    
                     </tr>
         </tbody>
       </table>
