@@ -34,14 +34,23 @@ window.onload = async function () {
   currentQuestion = res.last_question_answered;
   level = res.level;
   loadQuestion(currentQuestion);
-  updateScoreboard();
+  updateLevelInfo();
   startTimer(); // Start the timer when the quiz loads
 
   levelStartButton.addEventListener("click", async () => {
+    const levelButton = document.getElementById("level-button");
+    const answerButtons = document.querySelectorAll(".answers button");
+
+    // Reset the timer to 60 seconds
+    timeLeft = 60;
+    clearInterval(timer);
+    startTimer();
+
     // reset question number
     currentQuestion = 0;
     correctAnswersInLevel = 0;
     level++;
+    updateLevelInfo();
     const token = localStorage.getItem("token");
 
     try {
@@ -72,6 +81,13 @@ window.onload = async function () {
             token,
           },
           body: JSON.stringify(qtnBody),
+        });
+
+        // hide the button to continue new game level
+        levelButton.style.display = "none";
+
+        answerButtons.forEach((button) => {
+          button.classList.remove("no-hover");
         });
       }
     } catch (error) {
@@ -115,7 +131,10 @@ async function checkAnswer(selectedIndex) {
   const answerButtons = document.querySelectorAll(".answers button");
 
   // Disable all buttons after an answer is selected
-  answerButtons.forEach((button) => (button.disabled = true));
+  answerButtons.forEach((button) => {
+    button.disabled = true;
+    button.classList.add("no-hover");
+  });
 
   currentQuestion++;
 
@@ -131,7 +150,7 @@ async function checkAnswer(selectedIndex) {
   if (selectedIndex === correctAnswer) {
     feedbackEl.innerText = "Correct answer 👍";
     feedbackEl.className = "feedback correct";
-    score += points; // Add points based on response time
+    score += points;
     correctAnswersInLevel++;
     let body = {
       question: currentQuestion,
@@ -167,16 +186,22 @@ async function checkAnswer(selectedIndex) {
 
   feedbackEl.style.display = "block";
   nextButton.style.display = "block";
-  updateScoreboard();
+  updateLevelInfo();
 
   // Check if Level 1 is complete
-  if (currentQuestion === res.length - 1) {
+  if (currentQuestion === res.length) {
     checkLevelProgression();
     nextButton.style.display = "none";
   }
 }
 
 async function loadNextQuestion() {
+  const answerButtons = document.querySelectorAll(".answers button");
+
+  answerButtons.forEach((button) => {
+    button.classList.remove("no-hover");
+  });
+
   // Reset the timer to 60 seconds
   timeLeft = 60;
   clearInterval(timer);
@@ -197,7 +222,7 @@ function checkLevelProgression() {
   if (correctAnswersInLevel >= levelThreshold) {
     levelStatusEl.innerText = `Level ${level} Achieved!`;
     levelButton.innerHTML = `Start level ${level + 1}`;
-    levelButton.style.display = "block"; // Show next Level button if the user passes
+    levelButton.style.display = "block";
   } else {
     levelStatusEl.innerText = `Level ${level} Failed. You need at least 5 correct answers.`;
   }
@@ -205,10 +230,10 @@ function checkLevelProgression() {
 
   setTimeout(() => {
     levelStatusEl.style.display = "none";
-  }, 3000); // Show the level status for 3 seconds
+  }, 3000);
 }
 
-function updateScoreboard() {
+function updateLevelInfo() {
   const levelInfo = document.getElementById("level-info");
 
   // Update level information
@@ -238,7 +263,10 @@ function startTimer() {
   timer = setInterval(() => {
     if (timeLeft <= 0) {
       // Disable all buttons after an answer is selected
-      answerButtons.forEach((button) => (button.disabled = true));
+      answerButtons.forEach((button) => {
+        button.disabled = true;
+        button.classList.add("no-hover");
+      });
 
       clearInterval(timer);
       // Handle time up scenario
@@ -252,7 +280,7 @@ function startTimer() {
       if (timeLeft < 20) {
         timerEl.style.color = "red";
       } else {
-        timerEl.style.color = ""; // Reset to default color
+        timerEl.style.color = "";
       }
       timeLeft--;
     }
