@@ -9,7 +9,7 @@ userRouter.post("/auth/register", user.register);
 
 userRouter.get("/profile", verifyToken, user.profile);
 userRouter.get("/leaderboard", verifyToken, user.leaderboard);
-userRouter.post("/invite", user.inviteUser);
+userRouter.post("/invite", verifyToken, user.inviteUser);
 userRouter.post("/accept-invite", user.acceptInvite);
 
 
