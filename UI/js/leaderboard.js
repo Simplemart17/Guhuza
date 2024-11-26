@@ -1,22 +1,7 @@
 const url = "http://localhost:3000/api/v1"; // TODO: use env file for dynamic url
 // const url = "https://guhuza.onrender.com/api/v1"; // TODO: use env file for dynamic url
 
-// TODO: complete api to add points for each accepted invite through links
-// Share game on social media
-function shareGame(platform) {
-  let url = "";
-  if (platform === "facebook") {
-    url =
-      "https://www.facebook.com/sharer/sharer.php?u=" + document.location.href;
-  } else if (platform === "twitter") {
-    url = "https://twitter.com/intent/tweet?url=" + document.location.href;
-  } else if (platform === "linkedin") {
-    url =
-      "https://www.linkedin.com/shareArticle?mini=true&url=" +
-      document.location.href;
-  }
-  window.open(url, "_blank");
-}
+let referralUrl;
 
 //TODO: map completed levels to the badge on the leaderboard
 window.onload = async function () {
@@ -24,6 +9,18 @@ window.onload = async function () {
   if (!token) {
     window.location.href = "signin.html";
   }
+
+  // get user profile
+  const userDetails = await fetch(`${url}/profile`, {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+      token,
+    },
+  });
+
+  const res = await userDetails.json();
+  referralUrl = `http://localhost:5500/UI/accept.html?userId=${res.id}`;
 
   await fetchLeaderboard();
 };
@@ -49,11 +46,35 @@ async function fetchLeaderboard() {
   }
 }
 
+// Share game on social media
+function shareGame(platform) {
+  let url = "";
+  if (platform === "facebook") {
+    url = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(
+      referralUrl
+    )}`;
+  } else if (platform === "twitter") {
+    url = `https://twitter.com/intent/tweet?url=${encodeURIComponent(
+      referralUrl
+    )}`;
+  } else if (platform === "linkedin") {
+    url = `https://www.linkedin.com/shareArticle?mini=true&url=${encodeURIComponent(
+      referralUrl
+    )}`;
+  }
+  window.open(
+    url,
+    `${platform}-share`,
+    "width=600, height=400, resizable=yes, scrollbars=yes"
+  );
+}
+
 function displayLeaderboard(data) {
   const leaderboardData = document.getElementById("leaderboard-table");
 
   if (data) {
     data.leaderboard.forEach((board, index) => {
+      const inviteEmails = board.user.invite.map(invite => invite.email).join(", ");
       leaderboardData.innerHTML += `
       <table>
         <tbody>
@@ -67,8 +88,7 @@ function displayLeaderboard(data) {
                             <span class="badge">Interview Ace</span>
                         </td>
                         <td data-label="Referred Users">
-                            gauravarora5@gmail.com<br>
-                            md45678@hotmail.com
+                            ${inviteEmails}
                         </td>
     
                     </tr>
