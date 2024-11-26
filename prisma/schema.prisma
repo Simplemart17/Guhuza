@@ -11,6 +11,7 @@ model Invite {
   id          Int       @id @default(autoincrement())
   email       String    @unique(map: "email") @db.VarChar(255)
   inviteToken String    @unique
+  status      Boolean   @default(false)
   userId      Int
   createdAt   DateTime  @default(now()) @db.Timestamp(0)
   updatedAT   DateTime? @db.Timestamp(0)
@@ -47,7 +48,7 @@ model User {
   email             String        @unique(map: "email") @db.VarChar(255)
   password          String        @db.VarChar(255)
   level             Int           @default(1)
-  question_answered String        @default("0")
+  question_answered Int           @default(0)
   createdAt         DateTime      @default(now()) @db.Timestamp(0)
   updatedAt         DateTime?     @db.Timestamp(0)
   invite            Invite[]
