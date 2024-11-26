@@ -32,7 +32,6 @@ function validatePassword(password) {
 signInForm.onsubmit = async (event) => {
   event.preventDefault();
   const button = document.getElementById('signin-btn');
-  const loader = document.getElementById('loader');
   const email = document.getElementById("email").value;
   const password = document.getElementById("password").value;
   const error = document.getElementById("error");
@@ -47,7 +46,6 @@ signInForm.onsubmit = async (event) => {
     button.disabled = true;
     button.style.background = "gray";
     button.textContent = 'Signing In...';
-    loader.style.display = 'block';
 
     const response = await fetch(`${url}/auth/login`, {
       method: "POST",
@@ -65,7 +63,6 @@ signInForm.onsubmit = async (event) => {
       button.disabled = false;
       button.style.background = "";
       button.textContent = 'Sign In';
-      loader.style.display = 'none';
       setTimeout(() => {
         error.style.display = "none";
       }, 3000);
@@ -84,7 +81,6 @@ signInForm.onsubmit = async (event) => {
     button.disabled = false;
     button.style.background = "";
     button.textContent = 'Sign In';
-    loader.style.display = 'none';
     console.log(error);
   }
 };

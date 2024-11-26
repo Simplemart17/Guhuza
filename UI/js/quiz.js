@@ -3,6 +3,7 @@ const url = "http://localhost:3000/api/v1";
 let res;
 
 let currentQuestion;
+let answeredQuestion;
 let score = 0;
 let level;
 let correctAnswersInLevel = 0;
@@ -97,6 +98,7 @@ window.onload = async function () {
 };
 
 async function loadQuestion(index) {
+  // answeredQuestion = currentQuestion.split(",");
   const quizQuestion = await fetch(`${url}/quiz?level=${level}`);
   res = await quizQuestion.json();
 
@@ -153,6 +155,8 @@ async function checkAnswer(selectedIndex) {
   }
 
   if (selectedIndex === correctAnswer) {
+    // // convert the question index/id to string, push to the answered question array
+    // answeredQuestion.push(currentQuestion.toString());
     feedbackEl.innerText = "Correct answer 👍";
     feedbackEl.className = "feedback correct";
     score++;
