@@ -1,5 +1,5 @@
-// const url = "http://localhost:3000/api/v1";
-const url = "https://guhuza.onrender.com/api/v1";
+const url = "http://localhost:3000/api/v1";
+// const url = "https://guhuza.onrender.com/api/v1";
 
 const acceptInviteForm = document.getElementById("accept-invite-form");
 
@@ -33,34 +33,45 @@ acceptInviteForm.onsubmit = async (event) => {
   event.preventDefault();
 
   const urlParams = new URLSearchParams(window.location.search);
-  const userEmail = urlParams.get('email');
+  const userId = urlParams.get('userId');
+  const token = urlParams.get('token');
 
   const email = document.getElementById("email").value;
   const password = document.getElementById("password").value;
   const fullname = document.getElementById("fullname").value;
+  const button = document.getElementById('accept-btn');
+
   const error = document.getElementById("error");
   const success = document.getElementById("success");
 
-  const login = {
+  const userInfo = {
     email,
     password,
     fullname
   };
 
   try {
-    const response = await fetch(`${url}/accept-invite?email=${userEmail}`, {
+    const inviteToken = token ? `&token=${token}` : '';
+    button.disabled = true;
+    button.style.background = "gray";
+    button.textContent = 'Accepting...';
+
+    const response = await fetch(`${url}/accept-invite?userId=${userId}${inviteToken}`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify(login),
+      body: JSON.stringify(userInfo),
     });
 
     const res = await response.json();
 
     if (res.status !== 201) {
       error.innerHTML = res.message;
+      button.disabled = false;
       error.style.display = "block";
+      button.style.background = "";
+      button.textContent = 'Accept Invite';
       setTimeout(() => {
         error.style.display = "none";
       }, 3000);

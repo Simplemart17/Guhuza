@@ -1,5 +1,5 @@
-// const url = "http://localhost:3000/api/v1";
-const url = "https://guhuza.onrender.com/api/v1";
+const url = "http://localhost:3000/api/v1";
+// const url = "https://guhuza.onrender.com/api/v1";
 
 const signInForm = document.getElementById("sign-in-form");
 
@@ -31,6 +31,7 @@ function validatePassword(password) {
 
 signInForm.onsubmit = async (event) => {
   event.preventDefault();
+  const button = document.getElementById('signin-btn');
   const email = document.getElementById("email").value;
   const password = document.getElementById("password").value;
   const error = document.getElementById("error");
@@ -42,6 +43,10 @@ signInForm.onsubmit = async (event) => {
   };
 
   try {
+    button.disabled = true;
+    button.style.background = "gray";
+    button.textContent = 'Signing In...';
+
     const response = await fetch(`${url}/auth/login`, {
       method: "POST",
       headers: {
@@ -55,6 +60,9 @@ signInForm.onsubmit = async (event) => {
     if (res.status !== 200) {
       error.innerHTML = res.message;
       error.style.display = "block";
+      button.disabled = false;
+      button.style.background = "";
+      button.textContent = 'Sign In';
       setTimeout(() => {
         error.style.display = "none";
       }, 3000);
@@ -70,6 +78,9 @@ signInForm.onsubmit = async (event) => {
       }, 3000);
     }
   } catch (error) {
+    button.disabled = false;
+    button.style.background = "";
+    button.textContent = 'Sign In';
     console.log(error);
   }
 };

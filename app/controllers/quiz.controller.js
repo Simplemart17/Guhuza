@@ -17,7 +17,7 @@ const Quiz = {
   async updateQuestion(req, res) {
     await prisma.user.update({
       where: { email: req.user.email },
-      data: { last_question_answered: req.body.question },
+      data: { question_answered: req.body.question },
     });
 
     if (req.body.point) {

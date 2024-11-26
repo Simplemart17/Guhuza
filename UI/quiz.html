@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Career Quiz - Guhuza</title>
-    <link rel="stylesheet" href="style/question.css"> <!-- Link to your CSS file -->
+    <link rel="stylesheet" href="style/question.css">
     <link rel="stylesheet" href="style/style.css">
     <link rel="stylesheet" href="style/footer.css">
     <link rel="stylesheet" href="style/header.css">
@@ -56,11 +56,12 @@
 
         <!-- Next Question Button -->
         <button class="next-question" id="next-question" onclick="loadNextQuestion()">Next Question</button>
-
-        <div id="stars" class="stars-container"></div>
+        
         <div id="level-info"></div>
+        
+        <!-- Try again Button -->
+        <button class="try-again" id="try-again" onclick="tryAgain()">Try Again</button>
 
-        <!-- Level 2 button (initially hidden) -->
         <button id="level-button" style="display:none; background-color: #3498db; color: white; border: none;
             padding: 10px 20px; border-radius: 5px; cursor: pointer;"></button>
     </div>

@@ -3,12 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sign Up - Guhuza</title>
+    <meta property="og:title" content="Guhuza platform" />
+    <meta property="og:url" content="https://simplemart17.github.io/guhuza/" />
+    <meta property="og:image" content="https://guhuza.com/logo/logo_white_large.png" />
+    <meta property="og:type" content="website" />
+    <meta property="og:description" content="Enhance your visibility by playing the game" />
+    <meta property="og:locale" content="en_US" />
+    <title>Accept Invite - Guhuza</title>
     <link rel="stylesheet" href="style/sign.css">
     <link rel="stylesheet" href="style/style.css">
     <link rel="stylesheet" href="style/footer.css">
     <link rel="stylesheet" href="style/header.css">
-    <script defer src="sign.js"></script> <!-- JavaScript for validation -->
 </head>
 <body>
     <!-- Header / Navigation Bar -->
@@ -45,8 +50,11 @@
                 
                 <label for="confirm_password">Confirm Password:</label>
                 <input type="password" id="confirm_password" name="confirm_password" required placeholder="Confirm your password">
+
+                <p id="error"></p>
+                <p id="success"></p>
                 
-                <button type="submit">Accept Invite</button>
+                <button type="submit" id="accept-btn">Accept Invite</button>
             </form>
             <p>Already have an account? <a href="signin.html">Sign In</a></p>
         </div>
