@@ -42,15 +42,15 @@ model Point {
 }
 
 model User {
-  id                     Int           @id @default(autoincrement())
-  fullname               String?       @db.VarChar(255)
-  email                  String        @unique(map: "email") @db.VarChar(255)
-  password               String        @db.VarChar(255)
-  level                  Int           @default(1)
-  last_question_answered Int           @default(0)
-  createdAt              DateTime      @default(now()) @db.Timestamp(0)
-  updatedAt              DateTime?     @db.Timestamp(0)
-  invite                 Invite[]
-  leaderboard            Leaderboard[]
-  point                  Point[]
+  id                Int           @id @default(autoincrement())
+  fullname          String?       @db.VarChar(255)
+  email             String        @unique(map: "email") @db.VarChar(255)
+  password          String        @db.VarChar(255)
+  level             Int           @default(1)
+  question_answered String        @default("0")
+  createdAt         DateTime      @default(now()) @db.Timestamp(0)
+  updatedAt         DateTime?     @db.Timestamp(0)
+  invite            Invite[]
+  leaderboard       Leaderboard[]
+  point             Point[]
 }

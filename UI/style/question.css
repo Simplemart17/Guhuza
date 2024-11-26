@@ -67,7 +67,7 @@
   color: red;
 }
 
-.next-question {
+.next-question, .try-again {
   display: none;
   margin-top: 30px;
   padding: 12px 20px;
