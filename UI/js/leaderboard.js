@@ -69,12 +69,39 @@ function shareGame(platform) {
   );
 }
 
+// map images to level
+function levelImageMap(level) {
+  if (level < 20) {
+    return '<img src="images/bolt.png" alt="Fast Learner" class="badge-icon">';
+  }
+}
+
+// map images to top score
+function topScoreImageMap(index) {
+  if (index === 0) {
+    return '<img src="images/crown.png" alt="Top Recruit" class="badge-icon">';
+  } else {
+    return "";
+  }
+}
+
+// map images to top sharer
+function topSharerImageMap(number) {
+  if (number > 1) {
+    return '<img src="images/global-connection.png" alt="Referral Master" class="badge-icon">';
+  } else {
+    return "";
+  }
+}
+
 function displayLeaderboard(data) {
   const leaderboardData = document.getElementById("leaderboard-table");
 
   if (data) {
     data.leaderboard.forEach((board, index) => {
-      const inviteEmails = board.user.invite.map(invite => invite.email).join(", ");
+      const inviteEmails = board.user.invite
+        .map((invite) => invite.email)
+        .join(", ");
       leaderboardData.innerHTML += `
       <table>
         <tbody>
@@ -84,11 +111,12 @@ function displayLeaderboard(data) {
                         <td data-label="Total Point">${board.total_point}</td>
                         <td data-label="Level">${board.user.level}</td>
                         <td data-label="Badges Earned">
-                            <span class="badge">Job Seeker Pro</span>
-                            <span class="badge">Interview Ace</span>
+                            ${levelImageMap(board.user.level)}
+                            ${topScoreImageMap(index)}
+                            ${topSharerImageMap(board.user.invite.length)}
                         </td>
                         <td data-label="Referred Users">
-                            ${inviteEmails}
+                            ${inviteEmails || "N/A"}
                         </td>
     
                     </tr>
