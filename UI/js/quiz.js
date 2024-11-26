@@ -31,7 +31,7 @@ window.onload = async function () {
   });
 
   const res = await userDetails.json();
-  currentQuestion = res.last_question_answered;
+  currentQuestion = res.question_answered;
   level = res.level;
   loadQuestion(currentQuestion);
   updateLevelInfo();
@@ -105,6 +105,11 @@ async function loadQuestion(index) {
   const feedbackEl = document.getElementById("feedback");
   const nextButton = document.getElementById("next-question");
 
+  if (currentQuestion === res.length) {
+    checkLevelProgression();
+    nextButton.style.display = "none";
+  }
+
   // Load question and answers
   questionEl.innerText = res[index].question;
 
@@ -150,7 +155,7 @@ async function checkAnswer(selectedIndex) {
   if (selectedIndex === correctAnswer) {
     feedbackEl.innerText = "Correct answer 👍";
     feedbackEl.className = "feedback correct";
-    score += points;
+    score++;
     correctAnswersInLevel++;
     let body = {
       question: currentQuestion,
@@ -209,22 +214,42 @@ async function loadNextQuestion() {
 
   if (currentQuestion < res.length) {
     loadQuestion(currentQuestion);
-  } else {
-    displayFinalScore();
   }
+}
+
+async function tryAgain() {
+  currentQuestion = 0;
+  loadQuestion(0);
 }
 
 function checkLevelProgression() {
   const levelButton = document.getElementById("level-button");
   const levelStatusEl = document.getElementById("level-status");
+  const questionEl = document.getElementById("question");
+  const answerButtons = document.getElementById("answers");
+  const feedbackEl = document.getElementById("feedback");
+  const nextButton = document.getElementById("next-question");
+  const tryAgainButton = document.getElementById("try-again");
+  const timerEl = document.getElementById("timer");
+  const levelInfo = document.getElementById("level-info");
 
   // Check if the user passed Level 1 (minimum 5 correct answers)
   if (correctAnswersInLevel >= levelThreshold) {
+    displayFinalScore();
     levelStatusEl.innerText = `Level ${level} Achieved!`;
     levelButton.innerHTML = `Start level ${level + 1}`;
     levelButton.style.display = "block";
-  } else {
-    levelStatusEl.innerText = `Level ${level} Failed. You need at least 5 correct answers.`;
+  } else {  
+    clearInterval(timer);
+  
+    // Hide question, answers, and feedback
+    questionEl.innerText = `Level ${level} Failed! \nYou got ${score} out of ${res.length} questions correctly! \n\nYou need at least 5 correct answers.`;
+    answerButtons.style.display = "none";
+    feedbackEl.style.display = "none";
+    nextButton.style.display = "none";
+    timerEl.style.display = "none";
+    tryAgainButton.style.display = "block";
+    levelInfo.innerHTML = "";
   }
   levelStatusEl.style.display = "block";
 
@@ -245,12 +270,16 @@ async function displayFinalScore() {
   const answerButtons = document.getElementById("answers");
   const feedbackEl = document.getElementById("feedback");
   const nextButton = document.getElementById("next-question");
+  const timerEl = document.getElementById("timer");
+
+  clearInterval(timer);
 
   // Hide question, answers, and feedback
-  questionEl.innerText = `Quiz Complete! You scored ${score} out of ${res.length}!`;
+  questionEl.innerText = `Level ${level} Completed! \nYou got ${score} out of ${res.length} questions correctly!`;
   answerButtons.style.display = "none";
   feedbackEl.style.display = "none";
   nextButton.style.display = "none";
+  timerEl.style.display = "none";
 }
 
 // Add this function to start the countdown timer
