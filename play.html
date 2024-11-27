@@ -54,18 +54,18 @@
                         <li>Pressure Handling</li>
                         <li>Essentials for Recruitment</li>
                     </ul>
-                 </li>
-                 
-                 <li style="list-style-type: none;"><strong>What you will achieve:</strong>
+                </li>
+
+                <li style="list-style-type: none;"><strong>What you will achieve:</strong>
                     <ul class="level-list advanced-level">
                         <li>Points for Levels Achieved</li>
                         <li>Earn Badges</li>
                         <li>Increased chances to become visible to Recruiters</li>
                     </ul>
-                 </li>
+                </li>
         </aside>
-    
-    
+
+
         <!-- Main Content for Game Levels and Details -->
         <div class="play-main">
             <section class="game-intro">
@@ -98,7 +98,7 @@
                     <!-- Advanced Level -->
                     <div class="level-card">
                         <h3>Advanced</h3>
-                        <p>Test Knowledge for Recruitments</p>
+                        <p>Test Knowledge for Recruitment</p>
                         <p>Score Required: 3</p>
                         <p>Master your job-seeking skills to become a pro!</p>
                     </div>
@@ -107,19 +107,20 @@
 
             <!--Start Quiz-->
             <section class="start-quiz">
-            <a href="quiz.html">
-                <button>Start</button>
-            </a>
-        </section>
+                <a href="quiz.html">
+                    <button>Start</button>
+                </a>
+            </section>
 
             <!-- Referral and Share Options -->
             <section class="referral-share">
                 <h2>Refer a Friend</h2>
                 <p>Earn bonus points by referring Guhuza to a friend. Share your unique referral link and invite them to
                     play.</p>
-                    <br>
+                <br>
                 <input type="text" id="referral-link" readonly>
                 <button onclick="copyReferral()">Copy Referral Link</button>
+                <button onclick="inviteFriend()">Invite Friend</button>
 
                 <h3>Share with Friends:</h3>
                 <div class="share-options">
@@ -128,6 +129,16 @@
                     <button onclick="shareOnSocial('linkedin')">Share on LinkedIn</button>
                 </div>
             </section>
+        </div>
+    </div>
+
+    <!-- Invite Friend Modal -->
+    <div id="inviteModal" class="modal" style="display: none;">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <h2>Invite a Friend</h2>
+            <input type="email" id="friendEmail" class="friendEmail" placeholder="Enter friend's email" required />
+            <button id="sendInviteButton" onclick="sendInvite()">Send Invite</button>
         </div>
     </div>
 

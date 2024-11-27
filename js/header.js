@@ -1,28 +1,28 @@
-const token = localStorage.getItem('token');
 
-document.addEventListener("DOMContentLoaded", () => {
+window.onload = async function () {
+  const token = localStorage.getItem('token');
   const menuToggle = document.querySelector(".menu-toggle");
   const mainNav = document.querySelector(".main-nav");
   const authButtons = document.querySelector(".auth-buttons");
-  const signIn = document.getElementById("btn-signin");
-  const signUp = document.getElementById("btn-signup");
+  const signIn = document.getElementById("signin");
+  const signUp = document.getElementById("signup");
 
   if (token) {
     signIn.innerText = "Log Out"
     signIn.addEventListener("click", () => {
       localStorage.clear();
-      window.location = "/UI/signin.html";
+      window.location.href = "signin.html";
     })
   } else {
     signIn.innerText = "Sign In"
     signIn.addEventListener("click", () => {
-      window.location = "/UI/signin.html";
+      window.location.href = "signin.html";
     })
   }
 
   signUp.addEventListener("click", () => {
     localStorage.clear();
-    window.location = "/UI/signup.html";
+    window.location.href = "signup.html";
   })
 
   menuToggle.addEventListener("click", () => {
@@ -48,4 +48,4 @@ document.addEventListener("DOMContentLoaded", () => {
   authButtons.addEventListener("click", (event) => {
     event.stopPropagation();
   });
-});
+};

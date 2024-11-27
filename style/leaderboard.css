@@ -87,17 +87,12 @@
 }
 
 /* Badges */
-.badge {
-    display: inline-block;
-    background-color: #4CAF50;
-    color: white;
-    padding: 3px 6px;
-    border-radius: 3px;
-    margin-right: 3px;
-    margin-bottom: 3px;
-    font-size: 12px;
+.badge-icon {
+    width: 50px; /* Adjust the size as needed */
+    height: 50px;
+    margin-right: 10px; /* Add spacing between the icon and text */
+    vertical-align: middle; /* Align the icon with text */
 }
-
 /* Badge Description Section */
 .badge-description {
     padding: 30px;
@@ -116,16 +111,20 @@
 
 .badge-list {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Responsive grid layout */
-    gap: 20px;
-    justify-items: center;
+    grid-template-columns: repeat(4, 1fr); /* 4 badges per row */
+    gap: 20px; /* Space between badges */
+    justify-items: center; /* Center badges horizontally */
+    align-items: start; /* Align badges vertically */
 }
+
 
 .badge-item {
     background-color: #fff;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     padding: 20px;
+    display: flex;
+    align-items: center;
     max-width: 250px;
     text-align: center;
     transition: transform 0.3s ease;

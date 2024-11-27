@@ -1,16 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sign In - Guhuza</title>
+    <meta property="og:title" content="Guhuza platform" />
+    <meta property="og:url" content="https://simplemart17.github.io/guhuza/" />
+    <meta property="og:image" content="https://guhuza.com/logo/logo_white_large.png" />
+    <meta property="og:type" content="website" />
+    <meta property="og:description" content="Enhance your visibility by playing the game" />
+    <meta property="og:locale" content="en_US" />
+    <title>Accept Invite - Guhuza</title>
     <link rel="stylesheet" href="style/sign.css">
     <link rel="stylesheet" href="style/style.css">
     <link rel="stylesheet" href="style/footer.css">
     <link rel="stylesheet" href="style/header.css">
 </head>
-
 <body>
     <!-- Header / Navigation Bar -->
     <header class="site-header">
@@ -27,27 +31,32 @@
                     <li><a href="#">About Us</a></li>
                 </ul>
             </nav>
-
+            
         </div>
     </header>
-
-    <!-- Sign in form -->
+    <!--Accept invite form-->
     <div class="auth-container">
         <div class="auth-box">
-            <h2>Sign In</h2>
-            <form role="form" id="sign-in-form">
+            <h2>Accept Invitation</h2>
+            <form id="accept-invite-form" onsubmit="return validateSignUp()" action="welcome.html">
                 <label for="email">Email Address:</label>
                 <input type="email" id="email" name="email" required placeholder="Enter your email address" required>
 
+                <label for="fullname">Full Name:</label>
+                <input type="text" id="fullname" name="fullname" required placeholder="Enter your full name" required>
+                
                 <label for="password">Password:</label>
-                <input type="password" id="password" name="password" required placeholder="Enter your password">
+                <input type="password" id="password" name="password" required placeholder="Create a password" minlength="8" maxlength="10">
+                
+                <label for="confirm_password">Confirm Password:</label>
+                <input type="password" id="confirm_password" name="confirm_password" required placeholder="Confirm your password">
+
                 <p id="error"></p>
                 <p id="success"></p>
-
-                <button type="submit" id="signin-btn">Sign In</button>
+                
+                <button type="submit" id="accept-btn">Accept Invite</button>
             </form>
-
-            <p>Don't have an account? <a href="signup.html">Sign Up</a></p>
+            <p>Already have an account? <a href="signin.html">Sign In</a></p>
         </div>
     </div>
 
@@ -86,7 +95,6 @@
     </footer>
 
     <script src="js/header.js"></script>
-    <script src="js/sign.js"></script>
+    <script src="js/accept.js"></script>
 </body>
-
 </html>
