@@ -11,18 +11,18 @@ window.onload = async function () {
     signIn.innerText = "Log Out"
     signIn.addEventListener("click", () => {
       localStorage.clear();
-      window.location = "/UI/signin.html";
+      window.location.href = "signin.html";
     })
   } else {
     signIn.innerText = "Sign In"
     signIn.addEventListener("click", () => {
-      window.location = "/UI/signin.html";
+      window.location.href = "signin.html";
     })
   }
 
   signUp.addEventListener("click", () => {
     localStorage.clear();
-    window.location = "/UI/signup.html";
+    window.location.href = "signup.html";
   })
 
   menuToggle.addEventListener("click", () => {

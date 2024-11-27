@@ -1,5 +1,5 @@
-const url = "http://localhost:3000/api/v1"; // TODO: use env file for dynamic url
-// const url = "https://guhuza.onrender.com/api/v1"; // TODO: use env file for dynamic url
+// const url = "http://localhost:3000/api/v1";
+const url = "https://guhuza.onrender.com/api/v1";
 
 let referralUrl;
 
@@ -20,7 +20,8 @@ window.onload = async function () {
   });
 
   const res = await userDetails.json();
-  referralUrl = `http://localhost:5500/UI/accept.html?userId=${res.id}`;
+  referralUrl = `https://simplemart17.github.io/guhuza/accept.html?userId=${res.id}`;
+  // referralUrl = `http://localhost:5500/UI/accept.html?userId=${res.id}`;
 
   await fetchLeaderboard();
 };
