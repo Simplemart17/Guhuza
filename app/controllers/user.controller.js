@@ -153,7 +153,7 @@ const User = {
 
     const mailOptions = {
       subject: "You're Invited!",
-      text: `Hello,\n\nYou have been invited by ${user.fullname} to join our platform. Please click the link below to register:\n\nhttp://localhost:5500/UI/accept.html?userId=${user.id}&token=${inviteToken}\n\nBest regards,\nYour App Team`,
+      text: `Hello,\n\nYou have been invited by ${user.fullname} to join our platform. Please click the link below to register:\n\n${process.env.UI_URL}/accept.html?userId=${user.id}&token=${inviteToken}\n\nBest regards,\nYour App Team`,
     };
 
     sendEmail(mailOptions.subject, mailOptions.text, email);
