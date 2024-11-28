@@ -2,13 +2,22 @@
 const url = "https://guhuza.onrender.com/api/v1";
 let res;
 
+// NOTE:
+// -- Randomizing the options will not work because the api
+//    returns the option in that order to verify the correct
+//    answer specified by the position in the api response.
+//
+// -- Storing the id of the answered question will not work
+//    because the questions does not contain any unique id
+//    for each question.
+
 let currentQuestion;
 let answeredQuestion;
 let score = 0;
 let level;
 let correctAnswersInLevel = 0;
 // const questionsPerLevel = 10;
-const levelThreshold = 5; // Minimum score to pass the level // TODO: set the variable in env for flexibility
+const levelThreshold = 5; // Minimum score to pass the level
 const levelStartButton = document.getElementById("level-button");
 
 let timer;
@@ -50,6 +59,7 @@ window.onload = async function () {
     // reset question number
     currentQuestion = 0;
     correctAnswersInLevel = 0;
+    score = 0;
     level++;
     updateLevelInfo();
     const token = localStorage.getItem("token");
@@ -104,8 +114,10 @@ async function loadQuestion(index) {
 
   const questionEl = document.getElementById("question");
   const answerButtons = document.querySelectorAll(".answers button");
+  const answerEl = document.getElementById("answers");
   const feedbackEl = document.getElementById("feedback");
   const nextButton = document.getElementById("next-question");
+  const timerEl = document.getElementById("timer");
 
   if (currentQuestion === res.length) {
     checkLevelProgression();
@@ -114,6 +126,12 @@ async function loadQuestion(index) {
 
   // Load question and answers
   questionEl.innerText = res[index].question;
+
+  // show answer option
+  answerEl.style.display = "block";
+
+  // display timer
+  timerEl.style.display = "flex";
 
   // Update each answer button with the corresponding options
   answerButtons.forEach((button, idx) => {
@@ -223,6 +241,36 @@ async function loadNextQuestion() {
 
 async function tryAgain() {
   currentQuestion = 0;
+  score = 0;
+  correctAnswersInLevel = 0;
+
+  startTimer()
+
+  // Show all elements that were hidden
+  const questionEl = document.getElementById("question");
+  const answerButtons = document.getElementById("answers");
+  const feedbackEl = document.getElementById("feedback");
+  const nextButton = document.getElementById("next-question");
+  const timerEl = document.getElementById("timer");
+  const tryAgainButton = document.getElementById("try-again");
+  const levelInfo = document.getElementById("level-info");
+
+  // Reset visibility of elements
+  questionEl.innerText = "";
+  answerButtons.style.display = "block";
+  feedbackEl.style.display = "none";
+  nextButton.style.display = "none";
+  timerEl.style.display = "flex";
+  tryAgainButton.style.display = "none";
+  levelInfo.innerHTML = "";
+
+  // Enable all answer buttons
+  const buttons = answerButtons.querySelectorAll("button");
+  buttons.forEach((button) => {
+    button.disabled = false;
+    button.classList.remove("no-hover");
+  });
+
   loadQuestion(0);
 }
 
