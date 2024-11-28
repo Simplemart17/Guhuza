@@ -2,6 +2,15 @@
 const url = "https://guhuza.onrender.com/api/v1";
 let res;
 
+// NOTE:
+// -- Randomizing the options will not work because the api
+//    returns the option in that order to verify the correct
+//    answer specified by the position in the api response.
+//
+// -- Storing the id of the answered question will not work
+//    because the questions does not contain any unique id
+//    for each question.
+
 let currentQuestion;
 let answeredQuestion;
 let score = 0;
