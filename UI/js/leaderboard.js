@@ -1,5 +1,5 @@
-// const url = "http://localhost:3000/api/v1";
-const url = "https://guhuza.onrender.com/api/v1";
+const url = "http://localhost:3000/api/v1";
+// const url = "https://guhuza.onrender.com/api/v1";
 
 let referralUrl;
 
@@ -115,9 +115,6 @@ function displayLeaderboard(data) {
                             ${levelImageMap(board.user.level)}
                             ${topScoreImageMap(index)}
                             ${topSharerImageMap(board.user.invite.length)}
-                        </td>
-                        <td data-label="Referred Users">
-                            ${inviteEmails || "N/A"}
                         </td>
     
                     </tr>
