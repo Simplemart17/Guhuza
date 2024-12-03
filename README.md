@@ -8,8 +8,7 @@
 ```https://github.com/Simplemart17/guhuza.git```
 
 - Navigate to `guhaza` directory
-- Create a .env file (replace the database string) as follows
-```DATABASE_URL="mysql://{user}:{password}@{hostname}:{port}/{database}"```
+- Create a .env file with the same keys as in the .env.example
 - Run ```npm install``` to install the dependencies
 - Run ```npm start``` to start the application
 - Open your browser and enter ```localhost:3000```, if everything works fine, you should see `Welcome to Guhuza!`
