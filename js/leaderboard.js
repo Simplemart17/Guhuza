@@ -116,10 +116,6 @@ function displayLeaderboard(data) {
                             ${topScoreImageMap(index)}
                             ${topSharerImageMap(board.user.invite.length)}
                         </td>
-                        <td data-label="Referred Users">
-                            ${inviteEmails || "N/A"}
-                        </td>
-    
                     </tr>
         </tbody>
       </table>
